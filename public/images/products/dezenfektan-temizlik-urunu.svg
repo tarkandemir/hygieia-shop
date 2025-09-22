@@ -1,0 +1,8 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="400" fill="#DBEAFE"/>
+    <rect x="50" y="100" width="300" height="200" rx="12" fill="white" stroke="#2563EB" stroke-width="2"/>
+    <text x="200" y="140" font-family="Arial, sans-serif" font-size="40" text-anchor="middle">🧽</text>
+    <text x="200" y="200" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2563EB" text-anchor="middle">Temizlik Ürünü - Dezenfektan</text>
+    <text x="200" y="220" font-family="Arial, sans-serif" font-size="12" fill="#6B7280" text-anchor="middle">Temizlik Ürünleri</text>
+    <rect x="80" y="250" width="240" height="3" rx="2" fill="#2563EB"/>
+  </svg>
