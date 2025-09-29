@@ -22,6 +22,7 @@ export default function Header({ activeLink }: HeaderProps) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [isClient, setIsClient] = useState(false);
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
 
   // Fix hydration mismatch by ensuring client-only rendering for dynamic content
   useEffect(() => {
@@ -81,8 +82,30 @@ export default function Header({ activeLink }: HeaderProps) {
   };
 
   return (
-    <header className="bg-[#000080] text-white">
-      <div className="container mx-auto px-6">
+    <>
+      {/* Free Shipping Banner */}
+      {isBannerVisible && (
+        <div className="bg-gradient-to-r from-[#6AF0D2] to-[#5BE0C2] py-2">
+          <div className="container mx-auto px-6">
+            <div className="flex items-center justify-between">
+              <div></div>
+              <p className="text-[#000069] font-semibold text-sm text-center">
+                🚚 3000 ₺ üzeri İstanbul içi kargo ücretsiz!
+              </p>
+              <button
+                onClick={() => setIsBannerVisible(false)}
+                className="text-[#000069] hover:text-[#000080] transition-colors p-1"
+                title="Kapat"
+              >
+                <X size={16} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      <header className="bg-[#000080] text-white">
+        <div className="container mx-auto px-6">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <Link href="/" onClick={handleLinkClick}>
@@ -247,6 +270,7 @@ export default function Header({ activeLink }: HeaderProps) {
       </div>
 
       {/* Mobile Navigation (can be added later) */}
-    </header>
+      </header>
+    </>
   );
 }

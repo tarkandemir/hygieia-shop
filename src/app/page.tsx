@@ -54,34 +54,29 @@ export default function HomePage() {
 
             {/* Hero Text Right */}
             <div className="space-y-8">
-              <h1 className="text-[60px] font-semibold leading-[1.2] text-[#6AF0D2]">
-                Hygieia ile<br />
-                fark yaratmanın<br />
-                tam zamanı!
-              </h1>
+              <div>
+                <h1 className="text-[60px] font-semibold leading-[1.2] text-[#6AF0D2] mb-4">
+                  Hygieia ile<br />
+                  fark yaratmanın<br />
+                  tam zamanı!
+                </h1>
+                <p className="text-[#6AF0D2] text-xl font-medium">
+                  İşletmenize Özel Çözümler<br />
+                  <span className="text-lg">🚚 3000 ₺ üzeri İstanbul içi kargo ücretsiz!</span>
+                </p>
+              </div>
               
               {/* CTA Button */}
               <Link 
                 href="/products"
                 className="inline-flex items-center space-x-2 bg-[#6AF0D2] text-[#000080] px-6 py-3 rounded-lg font-semibold text-base hover:bg-[#5BE0C2] transition-colors border border-[#6AF0D2]"
               >
-                <span>İşletmenize Özel Çözümler</span>
+                <span>Ürünleri İncele</span>
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Free Shipping Banner */}
-      <section className="py-4 bg-gradient-to-r from-[#6AF0D2] to-[#5BE0C2]">
-        <div className="container mx-auto px-6">
-          <div className="text-center">
-            <p className="text-[#000069] font-semibold text-lg">
-              🚚 3000 ₺ üzeri İstanbul içi kargo ücretsiz!
-            </p>
           </div>
         </div>
       </section>
@@ -334,38 +329,44 @@ export default function HomePage() {
               Kurumsal çözüm ortağınız Hygieia ile tedarik sorunu çözmek ve Fark Yaratmak bir telefon kadar uzağınızda.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+902122574839"
-                className="inline-flex items-center justify-center space-x-3 bg-[#6AF0D2] text-[#000080] px-6 py-3 rounded-2xl font-semibold hover:bg-[#5BE0C2] transition-colors"
-              >
-                <Phone size={16} />
-                <span>0212 257 48 39</span>
-              </a>
-              
-              <a
-                href="tel:+905389760902"
-                className="inline-flex items-center justify-center space-x-3 bg-[#6AF0D2] text-[#000080] px-6 py-3 rounded-2xl font-semibold hover:bg-[#5BE0C2] transition-colors"
-              >
-                <Phone size={16} />
-                <span>0538 976 09 02</span>
-              </a>
+            <div className="space-y-4">
+              {/* Phone Numbers Row */}
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href="tel:+902122574839"
+                  className="inline-flex items-center justify-center space-x-2 bg-[#6AF0D2] text-[#000080] px-4 py-3 rounded-2xl font-semibold hover:bg-[#5BE0C2] transition-colors text-sm"
+                >
+                  <Phone size={14} />
+                  <span>0212 257 48 39</span>
+                </a>
+                
+                <a
+                  href="tel:+905389760902"
+                  className="inline-flex items-center justify-center space-x-2 bg-[#6AF0D2] text-[#000080] px-4 py-3 rounded-2xl font-semibold hover:bg-[#5BE0C2] transition-colors text-sm"
+                >
+                  <Phone size={14} />
+                  <span>0538 976 09 02</span>
+                </a>
 
-              <a
-                href="tel:+905396511221"
-                className="inline-flex items-center justify-center space-x-3 bg-[#6AF0D2] text-[#000080] px-6 py-3 rounded-2xl font-semibold hover:bg-[#5BE0C2] transition-colors"
-              >
-                <Phone size={16} />
-                <span>0539 651 12 21</span>
-              </a>
+                <a
+                  href="tel:+905396511221"
+                  className="inline-flex items-center justify-center space-x-2 bg-[#6AF0D2] text-[#000080] px-4 py-3 rounded-2xl font-semibold hover:bg-[#5BE0C2] transition-colors text-sm"
+                >
+                  <Phone size={14} />
+                  <span>0539 651 12 21</span>
+                </a>
+              </div>
               
-              <a
-                href="https://wa.me/905389760902"
-                className="inline-flex items-center justify-center space-x-3 border border-[#6AF0D2] text-[#6AF0D2] px-6 py-3 rounded-2xl font-semibold hover:bg-[#6AF0D2] hover:text-[#000080] transition-colors"
-              >
-                <MessageCircle size={16} />
-                <span>Bize Yazın</span>
-              </a>
+              {/* WhatsApp Button */}
+              <div className="flex justify-center">
+                <a
+                  href="https://wa.me/905389760902"
+                  className="inline-flex items-center justify-center space-x-3 border border-[#6AF0D2] text-[#6AF0D2] px-6 py-3 rounded-2xl font-semibold hover:bg-[#6AF0D2] hover:text-[#000080] transition-colors"
+                >
+                  <MessageCircle size={16} />
+                  <span>Bize Yazın</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
