@@ -78,7 +78,11 @@ export function LoadingProvider({ children }: LoadingProviderProps) {
       {isLoading && (
         <div className="fixed inset-0 bg-black/40 z-[9999] flex items-center justify-center">
           <div className="bg-white/90 rounded-xl shadow-2xl p-6 flex flex-col items-center space-y-3 border border-gray-200">
-            <div className="w-16 h-16 border-4 border-gray-100 border-t-[#6AF0D2] border-r-[#5BE0C2] border-b-[#4DD0B2] border-l-[#3BC0A2] rounded-full animate-spin" />
+            <div className="w-16 h-16 border-4 border-transparent border-t-[#6AF0D2] border-r-[#5BE0C2] border-b-[#4DD0B2] border-l-[#3BC0A2] rounded-full animate-spin" style={{
+              background: 'conic-gradient(from 0deg, #6AF0D2, #5BE0C2, #4DD0B2, #3BC0A2, #6AF0D2)',
+              mask: 'radial-gradient(circle, transparent 60%, black 60%)',
+              WebkitMask: 'radial-gradient(circle, transparent 60%, black 60%)'
+            }} />
             <div className="text-gray-800 font-medium text-sm">
               Yükleniyor...
             </div>
