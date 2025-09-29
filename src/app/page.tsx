@@ -75,6 +75,17 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Free Shipping Banner */}
+      <section className="py-4 bg-gradient-to-r from-[#6AF0D2] to-[#5BE0C2]">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <p className="text-[#000069] font-semibold text-lg">
+              🚚 3000 ₺ üzeri İstanbul içi kargo ücretsiz!
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
       <section id="about" className="py-16 bg-[#E9FDF8]">
         <div className="container mx-auto px-6">
@@ -325,15 +336,31 @@ export default function HomePage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+905321234567"
+                href="tel:+902122574839"
                 className="inline-flex items-center justify-center space-x-3 bg-[#6AF0D2] text-[#000080] px-6 py-3 rounded-2xl font-semibold hover:bg-[#5BE0C2] transition-colors"
               >
                 <Phone size={16} />
-                <span>Bizi Arayın</span>
+                <span>0212 257 48 39</span>
               </a>
               
               <a
-                href="https://wa.me/905321234567"
+                href="tel:+905389760902"
+                className="inline-flex items-center justify-center space-x-3 bg-[#6AF0D2] text-[#000080] px-6 py-3 rounded-2xl font-semibold hover:bg-[#5BE0C2] transition-colors"
+              >
+                <Phone size={16} />
+                <span>0538 976 09 02</span>
+              </a>
+
+              <a
+                href="tel:+905396511221"
+                className="inline-flex items-center justify-center space-x-3 bg-[#6AF0D2] text-[#000080] px-6 py-3 rounded-2xl font-semibold hover:bg-[#5BE0C2] transition-colors"
+              >
+                <Phone size={16} />
+                <span>0539 651 12 21</span>
+              </a>
+              
+              <a
+                href="https://wa.me/905389760902"
                 className="inline-flex items-center justify-center space-x-3 border border-[#6AF0D2] text-[#6AF0D2] px-6 py-3 rounded-2xl font-semibold hover:bg-[#6AF0D2] hover:text-[#000080] transition-colors"
               >
                 <MessageCircle size={16} />

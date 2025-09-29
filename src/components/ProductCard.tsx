@@ -91,9 +91,12 @@ export default function ProductCard({ product }: ProductCardProps) {
         </Link>
 
         {/* Price */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center justify-between">
           <span className="text-lg font-bold text-gray-900">
             {formatPriceSimple(product.retailPrice)}
+          </span>
+          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#E9FDF8] text-[#000069] border border-[#6AF0D2]/20">
+            KDV DAHİL
           </span>
         </div>
 

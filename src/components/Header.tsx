@@ -224,9 +224,9 @@ export default function Header({ activeLink }: HeaderProps) {
             </div>
 
             {/* Phone */}
-            <a href="tel:+905551234567" className="hidden md:flex items-center space-x-2 hover:text-[#6AF0D2] transition-colors">
+            <a href="tel:+902122574839" className="hidden md:flex items-center space-x-2 hover:text-[#6AF0D2] transition-colors">
               <Phone size={20} />
-              <span>0555 123 45 67</span>
+              <span>0212 257 48 39</span>
             </a>
 
             {/* Cart */}
