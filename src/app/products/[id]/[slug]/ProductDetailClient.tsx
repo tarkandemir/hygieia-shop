@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { IProduct, ICategory } from '../../../../types';
 import { useCart } from '../../../../contexts/CartContext';
 import { useToast } from '../../../../components/ToastContainer';
-import { formatPriceSimple, getImageUrl } from '../../../../lib/utils';
+import { formatPriceSimple, getImageUrl, getOptimizedImageUrl } from '../../../../lib/utils';
 import ProductCard from '../../../../components/ProductCard';
 import ImageZoom from '../../../../components/ImageZoom';
 import { 
@@ -99,6 +99,9 @@ export default function ProductDetailClient({
             height={600}
             className="w-full h-96 lg:h-[600px] object-contain p-8"
             onClick={handleZoomClick}
+            priority={true}
+            quality={85}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
           />
             
           {/* Zoom Button */}
@@ -158,6 +161,9 @@ export default function ProductDetailClient({
                   width={80}
                   height={80}
                   className="w-full h-full object-contain p-1"
+                  loading="lazy"
+                  quality={75}
+                  sizes="80px"
                 />
               </button>
             ))}

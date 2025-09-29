@@ -10,7 +10,9 @@ import ProductDetailClient from './ProductDetailClient';
 
 async function getProduct(id: string): Promise<IProduct | null> {
   await connectToDatabase();
-  const product = await Product.findById(id).lean();
+  const product = await Product.findById(id)
+    .select('name description sku category wholesalePrice retailPrice stock minStock unit weight dimensions supplier tags status images createdAt updatedAt')
+    .lean();
   return product ? JSON.parse(JSON.stringify(product)) : null;
 }
 
@@ -21,7 +23,8 @@ async function getSimilarProducts(categoryId: string, excludeId: string): Promis
     _id: { $ne: excludeId },
     status: 'active'
   })
-  .limit(6)
+  .select('name images retailPrice stock category tags sku status slug')
+  .limit(4)
   .lean();
   
   return JSON.parse(JSON.stringify(products));
@@ -79,17 +82,27 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: ProductDetailPageProps) {
-  const { id } = await params;
-  const product = await getProduct(id);
-  
-  if (!product) {
+  try {
+    const { id } = await params;
+    await connectToDatabase();
+    const product = await Product.findById(id)
+      .select('name description')
+      .lean();
+    
+    if (!product) {
+      return {
+        title: 'Ürün Bulunamadı - Hygieia',
+      };
+    }
+
     return {
-      title: 'Ürün Bulunamadı - Hygieia',
+      title: `${product.name} - Hygieia`,
+      description: product.description || `${product.name} ürününü Hygieia'dan satın alın. En uygun fiyatlar ve hızlı teslimat.`,
+    };
+  } catch (error) {
+    console.error('Metadata generation error:', error);
+    return {
+      title: 'Ürün - Hygieia',
     };
   }
-
-  return {
-    title: `${product.name} - Hygieia`,
-    description: product.description || `${product.name} ürününü Hygieia'dan satın alın. En uygun fiyatlar ve hızlı teslimat.`,
-  };
 }
