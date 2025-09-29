@@ -27,20 +27,24 @@ export async function connectToDatabase() {
   }
 
   if (!cached.promise) {
+    // Parse existing URI and add performance parameters
+    const uri = new URL(MONGODB_URI!);
+    uri.searchParams.set('maxPoolSize', '20');
+    uri.searchParams.set('serverSelectionTimeoutMS', '2000');
+    uri.searchParams.set('socketTimeoutMS', '20000');
+    uri.searchParams.set('maxIdleTimeMS', '10000');
+    uri.searchParams.set('connectTimeoutMS', '2000');
+    uri.searchParams.set('heartbeatFrequencyMS', '10000');
+    uri.searchParams.set('retryReads', 'true');
+    uri.searchParams.set('retryWrites', 'true');
+    uri.searchParams.set('w', 'majority');
+
     const opts = {
       bufferCommands: false,
-      maxPoolSize: 20, // Increased pool size
-      serverSelectionTimeoutMS: 2000, // Reduced timeout
-      socketTimeoutMS: 20000, // Reduced socket timeout
       family: 4, // Use IPv4, skip trying IPv6
-      maxIdleTimeMS: 10000, // Reduced idle time
-      connectTimeoutMS: 2000, // Connection timeout
-      heartbeatFrequencyMS: 10000, // Heartbeat frequency
-      retryWrites: true,
-      retryReads: true,
     };
 
-    cached.promise = mongoose.connect(MONGODB_URI!, opts);
+    cached.promise = mongoose.connect(uri.toString(), opts);
   }
 
   try {
