@@ -19,7 +19,11 @@ async function getProducts(categoryName: string): Promise<IProduct[]> {
   const products = await Product.find({
     category: categoryName,
     status: 'active'
-  }).sort({ createdAt: -1 }).lean();
+  })
+  .select('name images retailPrice stock category tags sku status slug')
+  .sort({ createdAt: -1 })
+  .limit(50)
+  .lean();
   
   return JSON.parse(JSON.stringify(products));
 }
@@ -31,15 +35,16 @@ interface CategoryPageProps {
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const { slug } = await params;
-  
-  const category = await getCategory(slug);
-  
-  if (!category) {
-    notFound();
-  }
+  try {
+    const { slug } = await params;
+    
+    const category = await getCategory(slug);
+    
+    if (!category) {
+      notFound();
+    }
 
-  const products = await getProducts(category.name);
+    const products = await getProducts(category.name);
 
   const breadcrumbItems = [
     { label: 'Anasayfa', href: '/' },
@@ -111,22 +116,33 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <Footer />
     </div>
   );
+  } catch (error) {
+    console.error('Category page error:', error);
+    notFound();
+  }
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: CategoryPageProps) {
-  const { slug } = await params;
-  const category = await getCategory(slug);
-  
-  if (!category) {
+  try {
+    const { slug } = await params;
+    const category = await getCategory(slug);
+    
+    if (!category) {
+      return {
+        title: 'Kategori Bulunamadı - Hygieia',
+      };
+    }
+
     return {
-      title: 'Kategori Bulunamadı - Hygieia',
+      title: `${category.name} - Hygieia`,
+      description: category.description || `${category.name} kategorisindeki ürünleri Hygieia'dan satın alın. En uygun fiyatlar ve hızlı teslimat.`,
+      keywords: `${category.name}, hygieia, temizlik ürünleri, kağıt ürünleri`,
+    };
+  } catch (error) {
+    console.error('Metadata generation error:', error);
+    return {
+      title: 'Kategori - Hygieia',
     };
   }
-
-  return {
-    title: `${category.name} - Hygieia`,
-    description: category.description || `${category.name} kategorisindeki ürünleri Hygieia'dan satın alın. En uygun fiyatlar ve hızlı teslimat.`,
-    keywords: `${category.name}, hygieia, temizlik ürünleri, kağıt ürünleri`,
-  };
 }
