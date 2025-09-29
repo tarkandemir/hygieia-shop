@@ -64,7 +64,7 @@ export function generateProductSlug(name: string): string {
   return slugify(name);
 }
 
-export function getImageUrl(imagePath: string): string {
+export function getImageUrl(imagePath: string, width?: number, quality?: number): string {
   if (!imagePath) return '/placeholder-product.svg';
   
   // If it's a base64 image, return it directly
@@ -80,4 +80,20 @@ export function getImageUrl(imagePath: string): string {
   
   // Otherwise, treat it as a path and add /images/ prefix
   return `/images/${imagePath}`;
+}
+
+export function getOptimizedImageUrl(imagePath: string, width: number = 400, quality: number = 75): string {
+  if (!imagePath) return '/placeholder-product.svg';
+  
+  // If it's a base64 image, return it directly
+  if (imagePath.startsWith('data:image')) {
+    return imagePath;
+  }
+  
+  // If it's a URL, return it directly
+  if (imagePath.startsWith('http')) return imagePath;
+  
+  // For local images, use Next.js Image Optimization API
+  const basePath = imagePath.startsWith('/images/') ? imagePath : `/images/${imagePath}`;
+  return `/_next/image?url=${encodeURIComponent(basePath)}&w=${width}&q=${quality}`;
 }

@@ -7,7 +7,7 @@ import { IProduct } from '@/types';
 import { useCart } from '@/contexts/CartContext';
 import { useToast } from '@/components/ToastContainer';
 import { useLoading } from '@/contexts/LoadingContext';
-import { formatPriceSimple, getImageUrl, generateProductSlug } from '@/lib/utils';
+import { formatPriceSimple, getImageUrl, getOptimizedImageUrl, generateProductSlug } from '@/lib/utils';
 import { Minus, Plus, ShoppingCart } from 'lucide-react';
 
 interface ProductCardProps {
@@ -78,9 +78,11 @@ export default function ProductCard({ product }: ProductCardProps) {
             fill
             className="object-contain p-4"
             loading="lazy"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
             placeholder="blur"
             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+            quality={75}
+            priority={false}
           />
         </div>
       </Link>
