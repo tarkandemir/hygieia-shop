@@ -28,6 +28,7 @@ export default function ProductsClient({
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState('newest');
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
+  const [isLoading, setIsLoading] = useState(false);
 
   const selectedCategory = selectedCategoryId 
     ? categories.find(cat => cat._id === selectedCategoryId)

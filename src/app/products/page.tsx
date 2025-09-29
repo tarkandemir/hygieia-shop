@@ -13,19 +13,22 @@ async function getCategoriesWithProductCounts(): Promise<(ICategory & { productC
   await connectToDatabase();
   const categories = await Category.find({ isActive: true }).sort({ order: 1 }).lean();
   
-  // Get product counts for each category
-  const categoriesWithCounts = await Promise.all(
-    categories.map(async (category) => {
-      const productCount = await Product.countDocuments({ 
-        category: category.name, // Products store category as string name, not ObjectId
-        status: 'active' 
-      });
-      return {
-        ...category,
-        productCount
-      };
-    })
+  // Optimize: Get all product counts in a single aggregation query
+  const productCounts = await Product.aggregate([
+    { $match: { status: 'active' } },
+    { $group: { _id: '$category', count: { $sum: 1 } } }
+  ]);
+
+  // Create a map for faster lookup
+  const countMap = new Map(
+    productCounts.map(item => [item._id, item.count])
   );
+
+  // Combine categories with counts
+  const categoriesWithCounts = categories.map(category => ({
+    ...category,
+    productCount: countMap.get(category.name) || 0
+  }));
   
   return JSON.parse(JSON.stringify(categoriesWithCounts));
 }
@@ -51,7 +54,12 @@ async function getProducts(categoryId?: string, search?: string): Promise<IProdu
     ];
   }
   
-  const products = await Product.find(query).sort({ createdAt: -1 }).lean();
+  // Optimize: Limit results and add pagination support
+  const products = await Product.find(query)
+    .sort({ createdAt: -1 })
+    .limit(100) // Limit to prevent large data loads
+    .select('name description images retailPrice stock category tags sku status createdAt') // Only select needed fields
+    .lean();
   return JSON.parse(JSON.stringify(products));
 }
 

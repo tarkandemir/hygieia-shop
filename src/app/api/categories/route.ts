@@ -7,26 +7,33 @@ export async function GET() {
   try {
     await connectToDatabase();
     
+    // Cache headers for better performance
+    const headers = {
+      'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+    };
+    
     const categories = await Category.find({ isActive: true })
       .sort({ order: 1, name: 1 })
       .lean();
 
-    // Her kategori için ürün sayısını hesapla
-    const categoriesWithCounts = await Promise.all(
-      categories.map(async (category) => {
-        const productCount = await Product.countDocuments({
-          category: category.name,
-          status: 'active'
-        });
-        
-        return {
-          ...category,
-          productCount
-        };
-      })
+    // Optimize: Get all product counts in a single aggregation query
+    const productCounts = await Product.aggregate([
+      { $match: { status: 'active' } },
+      { $group: { _id: '$category', count: { $sum: 1 } } }
+    ]);
+
+    // Create a map for faster lookup
+    const countMap = new Map(
+      productCounts.map(item => [item._id, item.count])
     );
+
+    // Combine categories with counts
+    const categoriesWithCounts = categories.map(category => ({
+      ...category,
+      productCount: countMap.get(category.name) || 0
+    }));
     
-    return NextResponse.json(JSON.parse(JSON.stringify(categoriesWithCounts)));
+    return NextResponse.json(JSON.parse(JSON.stringify(categoriesWithCounts)), { headers });
     
   } catch (error) {
     console.error('Error fetching categories:', error);
