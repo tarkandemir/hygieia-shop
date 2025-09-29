@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useCart } from '../contexts/CartContext';
 import { useCategories } from '../hooks/useCategories';
 import { useLoading } from '../contexts/LoadingContext';
-import { Phone, Search, ShoppingBag, ChevronDown, X } from 'lucide-react';
+import { Search, ShoppingBag, ChevronDown, X } from 'lucide-react';
 
 interface HeaderProps {
   activeLink?: string;
@@ -245,12 +245,6 @@ export default function Header({ activeLink }: HeaderProps) {
                 </div>
               )}
             </div>
-
-            {/* Phone */}
-            <a href="tel:+902122574839" className="hidden md:flex items-center space-x-2 hover:text-[#6AF0D2] transition-colors">
-              <Phone size={20} />
-              <span>0212 257 48 39</span>
-            </a>
 
             {/* Cart */}
             <button
