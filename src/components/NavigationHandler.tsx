@@ -16,26 +16,12 @@ export default function NavigationHandler() {
       startLoading();
       previousPathname.current = pathname;
       
-      // Stop loading when the page is fully loaded
-      const handleLoad = () => {
+      // Stop loading after a reasonable delay
+      const timer = setTimeout(() => {
         stopLoading();
-      };
+      }, 1000); // 1 second should be enough for most pages
       
-      // Listen for page load events
-      window.addEventListener('load', handleLoad);
-      
-      // Also stop loading when DOM is ready
-      if (document.readyState === 'complete') {
-        // Page is already loaded, stop loading after a short delay
-        const timer = setTimeout(() => {
-          stopLoading();
-        }, 500);
-        return () => clearTimeout(timer);
-      }
-      
-      return () => {
-        window.removeEventListener('load', handleLoad);
-      };
+      return () => clearTimeout(timer);
     }
   }, [pathname, startLoading, stopLoading]);
   

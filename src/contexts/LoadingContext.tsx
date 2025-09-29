@@ -76,10 +76,10 @@ export function LoadingProvider({ children }: LoadingProviderProps) {
       
       {/* Global Loading Overlay */}
       {isLoading && (
-        <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998] flex items-center justify-center transition-all duration-300">
-          <div className="bg-white rounded-xl shadow-xl p-6 flex flex-col items-center space-y-3 animate-in fade-in slide-in-from-bottom-2 duration-300">
-            <div className="w-8 h-8 border-3 border-gray-200 border-t-[#000069] rounded-full animate-spin" />
-            <div className="text-[#000069] font-medium text-sm">
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[9999] flex items-center justify-center">
+          <div className="bg-white rounded-xl shadow-2xl p-8 flex flex-col items-center space-y-4">
+            <div className="w-12 h-12 border-4 border-gray-200 border-t-[#000069] rounded-full animate-spin" />
+            <div className="text-[#000069] font-semibold text-base">
               Yükleniyor...
             </div>
           </div>
