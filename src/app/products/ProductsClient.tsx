@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { ICategory, IProduct } from '../../types';
 import ProductCard from '../../components/ProductCard';
 import CategoryIcon from '../../components/CategoryIcon';
+import Pagination from '../../components/Pagination';
 import { Search, Filter, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface ProductsClientProps {
@@ -12,13 +13,19 @@ interface ProductsClientProps {
   categories: (ICategory & { productCount: number })[];
   selectedCategoryId?: string;
   initialSearch?: string;
+  currentPage: number;
+  totalPages: number;
+  totalCount: number;
 }
 
 export default function ProductsClient({ 
   initialProducts, 
   categories, 
   selectedCategoryId,
-  initialSearch 
+  initialSearch,
+  currentPage,
+  totalPages,
+  totalCount
 }: ProductsClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -84,6 +91,17 @@ export default function ProductsClient({
       params.delete('category');
     } else {
       params.set('category', categoryId);
+    }
+    params.delete('page'); // Reset to page 1 when changing category
+    router.push(`/products?${params.toString()}`);
+  };
+
+  const handlePageChange = (page: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (page === 1) {
+      params.delete('page');
+    } else {
+      params.set('page', page.toString());
     }
     router.push(`/products?${params.toString()}`);
   };
@@ -222,7 +240,7 @@ export default function ProductsClient({
                 {selectedCategory ? `${selectedCategory.name}` : 'Genel Temizlik Ürünleri'}
               </h2>
               <p className="text-gray-600">
-                {products.length} Ürün
+                {totalCount} Ürün (Sayfa {currentPage}/{totalPages})
               </p>
             </div>
 
@@ -304,6 +322,13 @@ export default function ProductsClient({
               </button>
             </div>
           )}
+          
+          {/* Pagination */}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </div>

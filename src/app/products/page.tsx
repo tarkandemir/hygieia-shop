@@ -33,7 +33,7 @@ async function getCategoriesWithProductCounts(): Promise<(ICategory & { productC
   return JSON.parse(JSON.stringify(categoriesWithCounts));
 }
 
-async function getProducts(categoryId?: string, search?: string): Promise<IProduct[]> {
+async function getProducts(categoryId?: string, search?: string, page: number = 1, limit: number = 20): Promise<{ products: IProduct[]; totalCount: number; totalPages: number }> {
   await connectToDatabase();
   
   const query: Record<string, unknown> = { status: 'active' };
@@ -54,29 +54,43 @@ async function getProducts(categoryId?: string, search?: string): Promise<IProdu
     ];
   }
   
-  // Optimize: Limit results and add pagination support
+  // Get total count for pagination
+  const totalCount = await Product.countDocuments(query);
+  const totalPages = Math.ceil(totalCount / limit);
+  
+  // Get products with pagination
   const products = await Product.find(query)
     .sort({ createdAt: -1 })
-    .limit(20) // Further reduced limit for faster loading
+    .skip((page - 1) * limit)
+    .limit(limit)
     .select('name images retailPrice stock category tags sku status slug') // Essential fields only
     .lean();
-  return JSON.parse(JSON.stringify(products));
+    
+  return {
+    products: JSON.parse(JSON.stringify(products)),
+    totalCount,
+    totalPages
+  };
 }
 
 interface ProductsPageProps {
   searchParams: Promise<{
     category?: string;
     search?: string;
+    page?: string;
   }>;
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const { category: categoryId, search } = await searchParams;
+  const { category: categoryId, search, page: pageParam } = await searchParams;
+  const page = parseInt(pageParam || '1', 10);
   
-  const [categories, products] = await Promise.all([
+  const [categories, productsData] = await Promise.all([
     getCategoriesWithProductCounts(),
-    getProducts(categoryId, search),
+    getProducts(categoryId, search, page, 20),
   ]);
+  
+  const { products, totalCount, totalPages } = productsData;
 
   const selectedCategory = categoryId 
     ? categories.find(cat => cat._id === categoryId)
@@ -164,6 +178,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         categories={categories}
         selectedCategoryId={categoryId}
         initialSearch={search}
+        currentPage={page}
+        totalPages={totalPages}
+        totalCount={totalCount}
       />
 
       <Footer />
