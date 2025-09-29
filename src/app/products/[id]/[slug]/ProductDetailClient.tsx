@@ -82,7 +82,7 @@ export default function ProductDetailClient({
   };
 
 
-  const images = product.images.length > 0 ? product.images.map(img => getImageUrl(img)) : ['/placeholder-product.svg'];
+  const images = product.images?.length > 0 ? product.images : ['/placeholder-product.svg'];
 
   return (
     <div className="container mx-auto px-6 py-8">
@@ -100,7 +100,7 @@ export default function ProductDetailClient({
             className="w-full h-96 lg:h-[600px] object-contain p-8"
             onClick={handleZoomClick}
             priority={true}
-            quality={85}
+            quality={75}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
           />
             

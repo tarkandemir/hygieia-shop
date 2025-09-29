@@ -29,11 +29,15 @@ export async function connectToDatabase() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
-      maxPoolSize: 10, // Maintain up to 10 socket connections
-      serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
-      socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+      maxPoolSize: 20, // Increased pool size
+      serverSelectionTimeoutMS: 2000, // Reduced timeout
+      socketTimeoutMS: 20000, // Reduced socket timeout
       family: 4, // Use IPv4, skip trying IPv6
-      maxIdleTimeMS: 30000, // Close connections after 30 seconds of inactivity
+      maxIdleTimeMS: 10000, // Reduced idle time
+      connectTimeoutMS: 2000, // Connection timeout
+      heartbeatFrequencyMS: 10000, // Heartbeat frequency
+      retryWrites: true,
+      retryReads: true,
     };
 
     cached.promise = mongoose.connect(MONGODB_URI!, opts);

@@ -11,7 +11,7 @@ import ProductDetailClient from './ProductDetailClient';
 async function getProduct(id: string): Promise<IProduct | null> {
   await connectToDatabase();
   const product = await Product.findById(id)
-    .select('name description sku category wholesalePrice retailPrice stock minStock unit weight dimensions supplier tags status images createdAt updatedAt')
+    .select('name description sku category retailPrice stock images tags status')
     .lean();
   return product ? JSON.parse(JSON.stringify(product)) : null;
 }
@@ -23,8 +23,8 @@ async function getSimilarProducts(categoryId: string, excludeId: string): Promis
     _id: { $ne: excludeId },
     status: 'active'
   })
-  .select('name images retailPrice stock category tags sku status slug')
-  .limit(4)
+  .select('name images retailPrice')
+  .limit(3)
   .lean();
   
   return JSON.parse(JSON.stringify(products));
@@ -46,21 +46,20 @@ interface ProductDetailPageProps {
 export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
   const { id } = await params;
   
+  // Single optimized query for product
   const product = await getProduct(id);
   
   if (!product) {
     notFound();
   }
 
-  const [category, similarProducts] = await Promise.all([
-    getCategory(product.category),
-    getSimilarProducts(product.category, product._id),
-  ]);
+  // Only fetch similar products, skip category for now
+  const similarProducts = await getSimilarProducts(product.category, product._id);
 
   const breadcrumbItems = [
     { label: 'Anasayfa', href: '/' },
     { label: 'Tüm Ürünler', href: '/products' },
-    ...(category ? [{ label: category.name, href: `/kategori/${category.slug}` }] : []),
+    { label: product.category },
     { label: product.name },
   ];
 
@@ -72,7 +71,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       <ProductDetailClient 
         product={product}
         similarProducts={similarProducts}
-        category={category}
+        category={null}
       />
       
       <Footer />
@@ -86,7 +85,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps) {
     const { id } = await params;
     await connectToDatabase();
     const product = await Product.findById(id)
-      .select('name description')
+      .select('name')
       .lean();
     
     if (!product) {
@@ -97,7 +96,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps) {
 
     return {
       title: `${product.name} - Hygieia`,
-      description: product.description || `${product.name} ürününü Hygieia'dan satın alın. En uygun fiyatlar ve hızlı teslimat.`,
+      description: `${product.name} ürününü Hygieia'dan satın alın. En uygun fiyatlar ve hızlı teslimat.`,
     };
   } catch (error) {
     console.error('Metadata generation error:', error);
