@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Home, ChevronRight } from 'lucide-react';
+import { useLoading } from '../contexts/LoadingContext';
 
 interface BreadcrumbItem {
   label: string;
@@ -13,6 +14,12 @@ interface BreadcrumbProps {
 }
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
+  const { startLoading } = useLoading();
+
+  const handleLinkClick = () => {
+    startLoading();
+  };
+
   // Create structured data for SEO
   const structuredData = {
     "@context": "https://schema.org",
@@ -69,6 +76,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
                 className="flex items-center hover:text-[#000069] transition-colors"
                 itemProp="item"
                 title="Anasayfa"
+                onClick={handleLinkClick}
               >
                 <span itemProp="name" className="sr-only">Anasayfa</span>
                 <Home size={16} aria-label="Anasayfa" />
@@ -92,6 +100,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
                     className="hover:text-[#000069] transition-colors"
                     itemProp="item"
                     title={item.label}
+                    onClick={handleLinkClick}
                   >
                     <span itemProp="name">{item.label}</span>
                   </Link>
