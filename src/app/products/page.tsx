@@ -57,8 +57,8 @@ async function getProducts(categoryId?: string, search?: string): Promise<IProdu
   // Optimize: Limit results and add pagination support
   const products = await Product.find(query)
     .sort({ createdAt: -1 })
-    .limit(100) // Limit to prevent large data loads
-    .select('name description images retailPrice stock category tags sku status createdAt') // Only select needed fields
+    .limit(50) // Reduced limit for faster loading
+    .select('name images retailPrice stock category tags sku status') // Reduced fields for faster query
     .lean();
   return JSON.parse(JSON.stringify(products));
 }
