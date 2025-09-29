@@ -34,6 +34,7 @@ export default function Header({ activeLink }: HeaderProps) {
   const handleLinkClick = () => {
     startLoading();
     setIsDropdownOpen(false);
+    setIsSearchOpen(false);
   };
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
