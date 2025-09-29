@@ -14,9 +14,21 @@ const nextConfig = {
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['lucide-react'],
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
   // Compression
   compress: true,
+  // Bundle analyzer
+  bundleAnalyzer: {
+    enabled: process.env.ANALYZE === 'true',
+  },
   // Image optimization
   images: {
     domains: ['localhost'],

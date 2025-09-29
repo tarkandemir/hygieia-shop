@@ -22,7 +22,7 @@ async function getProducts(categoryName: string): Promise<IProduct[]> {
   })
   .select('name images retailPrice stock category tags sku status slug')
   .sort({ createdAt: -1 })
-  .limit(50)
+  .limit(20)
   .lean();
   
   return JSON.parse(JSON.stringify(products));
