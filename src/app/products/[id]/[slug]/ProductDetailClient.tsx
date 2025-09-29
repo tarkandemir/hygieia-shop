@@ -179,14 +179,12 @@ export default function ProductDetailClient({
 
           {/* Price */}
           <div className="flex items-center space-x-4">
-            <div className="flex flex-col">
-              <span className="text-3xl font-bold text-[#000069]">
-                {formatPriceSimple(product.retailPrice)}
-              </span>
-              <span className="text-sm text-gray-500 font-medium">
-                KDV DAHİL
-              </span>
-            </div>
+            <span className="text-3xl font-bold text-[#000069]">
+              {formatPriceSimple(product.retailPrice)}
+            </span>
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#E9FDF8] text-[#000069] border border-[#6AF0D2]/20">
+              KDV DAHİL
+            </span>
           </div>
 
 
