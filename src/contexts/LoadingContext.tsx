@@ -78,7 +78,7 @@ export function LoadingProvider({ children }: LoadingProviderProps) {
       {isLoading && (
         <div className="fixed inset-0 bg-black/40 z-[9999] flex items-center justify-center">
           <div className="bg-white/90 rounded-xl shadow-2xl p-6 flex flex-col items-center space-y-3 border border-gray-200">
-            <div className="w-10 h-10 border-3 border-gray-300 border-t-[#6AF0D2] rounded-full animate-spin" />
+            <div className="w-16 h-16 border-4 border-gray-100 border-t-[#6AF0D2] border-r-[#5BE0C2] border-b-[#4DD0B2] border-l-[#3BC0A2] rounded-full animate-spin" />
             <div className="text-gray-800 font-medium text-sm">
               Yükleniyor...
             </div>
