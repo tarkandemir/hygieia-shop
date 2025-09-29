@@ -1,27 +1,43 @@
 'use client';
 
-import { useNavigationLoading } from '../hooks/useNavigationLoading';
 import { useLoading } from '../contexts/LoadingContext';
 import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function NavigationHandler() {
   const { startLoading, stopLoading } = useLoading();
   const pathname = usePathname();
+  const previousPathname = useRef(pathname);
   
   // Handle route changes with loading
   useEffect(() => {
-    // Start loading when pathname changes (navigation starts)
-    startLoading();
-    
-    // Stop loading after a short delay to show the loading state
-    const timer = setTimeout(() => {
-      stopLoading();
-    }, 800);
-    
-    return () => clearTimeout(timer);
+    // Only start loading if pathname actually changed
+    if (previousPathname.current !== pathname) {
+      startLoading();
+      previousPathname.current = pathname;
+      
+      // Stop loading when the page is fully loaded
+      const handleLoad = () => {
+        stopLoading();
+      };
+      
+      // Listen for page load events
+      window.addEventListener('load', handleLoad);
+      
+      // Also stop loading when DOM is ready
+      if (document.readyState === 'complete') {
+        // Page is already loaded, stop loading after a short delay
+        const timer = setTimeout(() => {
+          stopLoading();
+        }, 500);
+        return () => clearTimeout(timer);
+      }
+      
+      return () => {
+        window.removeEventListener('load', handleLoad);
+      };
+    }
   }, [pathname, startLoading, stopLoading]);
   
-  useNavigationLoading();
   return null;
 }
