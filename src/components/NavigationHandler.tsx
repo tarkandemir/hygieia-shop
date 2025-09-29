@@ -16,10 +16,10 @@ export default function NavigationHandler() {
       startLoading();
       previousPathname.current = pathname;
       
-      // Stop loading after a reasonable delay
+      // Stop loading after a short delay
       const timer = setTimeout(() => {
         stopLoading();
-      }, 1000); // 1 second should be enough for most pages
+      }, 500); // 0.5 second for quick feedback
       
       return () => clearTimeout(timer);
     }
