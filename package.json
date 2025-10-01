@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "optimize-db": "node scripts/optimize-database.js",
-    "test-perf": "node scripts/test-performance.js"
+    "test-perf": "node scripts/test-performance.js",
+    "check-images": "node scripts/check-images.js",
+    "migrate-images": "node scripts/migrate-images-to-files.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.0.1",
