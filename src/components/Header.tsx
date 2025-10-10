@@ -31,8 +31,14 @@ export default function Header({ activeLink }: HeaderProps) {
 
   const itemCount = isClient ? getItemCount() : 0;
 
-  const handleLinkClick = () => {
-    startLoading();
+  const handleLinkClick = (targetPath: string) => {
+    const currentPath = window.location.pathname;
+    
+    // Only show loading if navigating to a different page
+    if (currentPath !== targetPath) {
+      startLoading();
+    }
+    
     setIsDropdownOpen(false);
     setIsSearchOpen(false);
   };
@@ -62,13 +68,23 @@ export default function Header({ activeLink }: HeaderProps) {
   };
 
   const handleNavigationClick = (url: string) => {
-    startLoading();
+    const currentPath = window.location.pathname;
+    const targetPath = url.split('?')[0]; // Remove query params for comparison
+    
     setIsDropdownOpen(false);
     setIsSearchOpen(false);
-    // Small delay to show loading before navigation
-    setTimeout(() => {
+    
+    // Only show loading if navigating to a different page
+    if (currentPath !== targetPath) {
+      startLoading();
+      // Small delay to show loading before navigation
+      setTimeout(() => {
+        router.push(url);
+      }, 100);
+    } else {
+      // If on the same page, just navigate (useful for query params)
       router.push(url);
-    }, 100);
+    }
   };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -119,7 +135,7 @@ export default function Header({ activeLink }: HeaderProps) {
         <div className="container mx-auto px-6">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <Link href="/" onClick={handleLinkClick}>
+          <Link href="/" onClick={() => handleLinkClick('/')}>
             <Image
               src="/logo.png"
               alt="Hygieia Logo"
@@ -133,7 +149,7 @@ export default function Header({ activeLink }: HeaderProps) {
           <nav className="hidden md:flex items-center space-x-8">
             <Link 
               href="/" 
-              onClick={handleLinkClick}
+              onClick={() => handleLinkClick('/')}
               className={`hover:text-[#6AF0D2] transition-colors ${
                 activeLink === 'home' ? 'text-[#6AF0D2]' : ''
               }`}
