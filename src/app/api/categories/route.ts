@@ -1,39 +1,30 @@
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '../../../lib/mongodb';
-import Category from '../../../models/Category';
-import Product from '../../../models/Product';
+import { Categories, Products } from '../../../lib/filedb';
 
 export async function GET() {
   try {
-    await connectToDatabase();
-    
     // Cache headers for better performance
     const headers = {
       'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
     };
     
-    const categories = await Category.find({ isActive: true })
-      .sort({ order: 1, name: 1 })
-      .lean();
+    const categories = await Categories.find({ isActive: true }).sort({ order: 1 }).lean();
+    const products = await Products.find({ status: 'active' }).lean();
 
-    // Optimize: Get all product counts in a single aggregation query
-    const productCounts = await Product.aggregate([
-      { $match: { status: 'active' } },
-      { $group: { _id: '$category', count: { $sum: 1 } } }
-    ]);
-
-    // Create a map for faster lookup
-    const countMap = new Map(
-      productCounts.map(item => [item._id, item.count])
-    );
+    // Count products per category
+    const countMap = new Map();
+    products.forEach((product: any) => {
+      const count = countMap.get(product.category) || 0;
+      countMap.set(product.category, count + 1);
+    });
 
     // Combine categories with counts
-    const categoriesWithCounts = categories.map(category => ({
+    const categoriesWithCounts = categories.map((category: any) => ({
       ...category,
       productCount: countMap.get(category.name) || 0
     }));
     
-    return NextResponse.json(JSON.parse(JSON.stringify(categoriesWithCounts)), { headers });
+    return NextResponse.json(categoriesWithCounts, { headers });
     
   } catch (error) {
     console.error('Error fetching categories:', error);

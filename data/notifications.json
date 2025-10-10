@@ -1,0 +1,96 @@
+[
+  {
+    "_id": "68cbf0859ab4ec2f5a29ed80",
+    "userId": "689a2528e81d8f6ed2edeb4c",
+    "type": "info",
+    "priority": "medium",
+    "title": "Email Gönderildi: Hygieia B2B Platformuna Hoş Geldiniz!",
+    "message": "Size bir email gönderildi: Hygieia B2B Platformuna Hoş Geldiniz!",
+    "data": {
+      "emailSubject": "Hygieia B2B Platformuna Hoş Geldiniz!",
+      "emailType": "sent",
+      "messageId": "msg_1758195845802_x56vrnij4"
+    },
+    "actionUrl": null,
+    "isRead": false,
+    "isEmailSent": true,
+    "emailSentAt": "2025-09-18T11:44:05.803Z",
+    "readAt": null,
+    "expiresAt": "2025-10-18T11:44:05.809Z",
+    "createdAt": "2025-09-18T11:44:05.809Z",
+    "updatedAt": "2025-09-18T11:44:05.809Z",
+    "__v": 0
+  },
+  {
+    "_id": "689a1ee94920bc6e0ecbb92d",
+    "title": "Hoş Geldiniz!",
+    "message": "Hygieia B2B Platform'a hoş geldiniz. Demo veriler başarıyla yüklendi.",
+    "type": "success",
+    "userId": "689a1ee74920bc6e0ecbb913",
+    "isRead": false,
+    "action": {
+      "type": "link",
+      "url": "/dashboard",
+      "label": "Dashboard'a Git"
+    },
+    "metadata": {},
+    "createdAt": "2025-08-11T16:48:41.671Z"
+  },
+  {
+    "_id": "689a1ee94920bc6e0ecbb92f",
+    "title": "Yeni Sipariş",
+    "message": "ABC Ticaret Ltd. Şti.'den yeni sipariş alındı.",
+    "type": "info",
+    "userId": "689a1ee74920bc6e0ecbb914",
+    "isRead": true,
+    "action": {
+      "type": "link",
+      "url": "/orders/HYG000001",
+      "label": "Siparişi Görüntüle"
+    },
+    "metadata": {
+      "orderNumber": "HYG000001",
+      "amount": 5000
+    },
+    "createdAt": "2025-08-11T12:48:41.671Z"
+  },
+  {
+    "_id": "68d0f6f1469c877613d7c9f3",
+    "userId": "689a2528e81d8f6ed2edeb4c",
+    "type": "info",
+    "priority": "medium",
+    "title": "Email Gönderildi: Hygieia B2B Platformuna Hoş Geldiniz!",
+    "message": "Size bir email gönderildi: Hygieia B2B Platformuna Hoş Geldiniz!",
+    "data": {
+      "emailSubject": "Hygieia B2B Platformuna Hoş Geldiniz!",
+      "emailType": "sent",
+      "messageId": "msg_1758525169518_smkdd9d0a"
+    },
+    "actionUrl": null,
+    "isRead": true,
+    "isEmailSent": true,
+    "emailSentAt": "2025-09-22T07:12:49.519Z",
+    "readAt": "2025-09-22T07:14:43.566Z",
+    "expiresAt": "2025-10-22T07:12:49.526Z",
+    "createdAt": "2025-09-22T07:12:49.526Z",
+    "updatedAt": "2025-09-22T07:14:44.165Z",
+    "__v": 0
+  },
+  {
+    "_id": "689a1ee94920bc6e0ecbb92e",
+    "title": "Düşük Stok Uyarısı",
+    "message": "Bazı ürünlerde stok seviyeleri minimum seviyenin altına düştü.",
+    "type": "warning",
+    "userId": "689a1ee74920bc6e0ecbb914",
+    "isRead": false,
+    "action": {
+      "type": "link",
+      "url": "/products?filter=low-stock",
+      "label": "Ürünleri Görüntüle"
+    },
+    "metadata": {
+      "lowStockCount": 3
+    },
+    "createdAt": "2025-08-11T14:48:41.671Z"
+  }
+]

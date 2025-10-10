@@ -1,0 +1,339 @@
+[
+  {
+    "_id": "689a1ee94920bc6e0ecbb92c",
+    "orderNumber": "HYG000002",
+    "customer": {
+      "name": "XYZ Pazarlama A.Ş.",
+      "email": "orders@xyzpazarlama.com",
+      "phone": "+90 555 7654321",
+      "company": "XYZ Pazarlama A.Ş.",
+      "taxNumber": "0987654321",
+      "billingAddress": {
+        "street": "Cumhuriyet Cad. No: 456",
+        "city": "Ankara",
+        "state": "İç Anadolu",
+        "postalCode": "06000",
+        "country": "Türkiye"
+      },
+      "shippingAddress": {
+        "street": "Cumhuriyet Cad. No: 456",
+        "city": "Ankara",
+        "state": "İç Anadolu",
+        "postalCode": "06000",
+        "country": "Türkiye"
+      }
+    },
+    "items": [
+      {
+        "product": "689a1ee84920bc6e0ecbb922",
+        "sku": "ORG-ZYG-1000",
+        "name": "Organik Zeytinyağı 1L",
+        "quantity": 24,
+        "unitPrice": 35,
+        "totalPrice": 840
+      }
+    ],
+    "status": "processing",
+    "paymentStatus": "pending",
+    "paymentMethod": "Kredi Kartı",
+    "subtotal": 840,
+    "taxAmount": 151.2,
+    "shippingCost": 75,
+    "totalAmount": 1066.1999999999998,
+    "currency": "TRY",
+    "notes": null,
+    "estimatedDeliveryDate": "2025-08-16T16:48:41.345Z",
+    "createdBy": "689a1ee74920bc6e0ecbb914",
+    "createdAt": "2025-08-10T16:48:41.345Z",
+    "updatedAt": "2025-08-11T16:48:41.345Z"
+  },
+  {
+    "_id": "689a1ee94920bc6e0ecbb92b",
+    "orderNumber": "HYG000001",
+    "customer": {
+      "name": "ABC Ticaret Ltd. Şti.",
+      "email": "siparis@abcticaret.com",
+      "phone": "+90 555 1234567",
+      "company": "ABC Ticaret Ltd. Şti.",
+      "taxNumber": "1234567890",
+      "billingAddress": {
+        "street": "Atatürk Cad. No: 123",
+        "city": "İstanbul",
+        "state": "Marmara",
+        "postalCode": "34000",
+        "country": "Türkiye"
+      },
+      "shippingAddress": {
+        "street": "Atatürk Cad. No: 123",
+        "city": "İstanbul",
+        "state": "Marmara",
+        "postalCode": "34000",
+        "country": "Türkiye"
+      }
+    },
+    "items": [
+      {
+        "product": "689a1ee84920bc6e0ecbb920",
+        "sku": "SAM-MON-27-4K",
+        "name": "Samsung 4K Monitör 27\"",
+        "quantity": 2,
+        "unitPrice": 2400,
+        "totalPrice": 4800
+      },
+      {
+        "product": "689a1ee84920bc6e0ecbb921",
+        "sku": "ERG-OFK-001",
+        "name": "Ergonomik Ofis Koltuğu",
+        "quantity": 5,
+        "unitPrice": 850,
+        "totalPrice": 4250
+      }
+    ],
+    "status": "confirmed",
+    "paymentStatus": "paid",
+    "paymentMethod": "Havale",
+    "subtotal": 9050,
+    "taxAmount": 1629,
+    "shippingCost": 50,
+    "totalAmount": 10729,
+    "currency": "TRY",
+    "notes": "Hızlı teslimat isteniyor",
+    "estimatedDeliveryDate": "2025-08-14T16:48:41.345Z",
+    "createdBy": "689a1ee74920bc6e0ecbb913",
+    "createdAt": "2025-08-09T16:48:41.345Z",
+    "updatedAt": "2025-08-11T16:48:41.345Z"
+  },
+  {
+    "_id": "68cbf97604f494995f0e1003",
+    "orderNumber": "SP2509180003",
+    "customer": {
+      "name": "tarkan demir",
+      "email": "tarkandemir.94@gmail.com",
+      "phone": "05358144650",
+      "company": "",
+      "taxId": ""
+    },
+    "billingAddress": {
+      "name": "tarkan demir",
+      "company": "",
+      "address1": "eczane karşısı 10",
+      "address2": "",
+      "city": "İstanbul",
+      "state": "Beşiktaş",
+      "postalCode": "00000",
+      "country": "Türkiye",
+      "phone": "05358144650",
+      "_id": "68cbf97604f494995f0e1004"
+    },
+    "shippingAddress": {
+      "name": "tarkan demir",
+      "company": "",
+      "address1": "eczane karşısı 10",
+      "address2": "",
+      "city": "İstanbul",
+      "state": "Beşiktaş",
+      "postalCode": "00000",
+      "country": "Türkiye",
+      "phone": "05358144650",
+      "_id": "68cbf97604f494995f0e1005"
+    },
+    "items": [
+      {
+        "productId": "68cb94ce0f5f91f3163edcd9",
+        "name": "Kağıt Havlu - Premium",
+        "sku": "KAG001",
+        "category": "Kağıt Ürünleri",
+        "quantity": 1,
+        "unitPrice": 25,
+        "totalPrice": 25,
+        "_id": "68cbf97604f494995f0e1006"
+      },
+      {
+        "productId": "689d8e8ac2decac0baf35369",
+        "name": "Asperox Sarı Güç 1 Lt.",
+        "sku": "HYG-002",
+        "category": "Temizlik Ürünleri",
+        "quantity": 1,
+        "unitPrice": 84,
+        "totalPrice": 84,
+        "_id": "68cbf97604f494995f0e1007"
+      },
+      {
+        "productId": "689d92c8855c7dcb3fa6cbf4",
+        "name": "Pril Bulaşık Deterjanı 4 Lt. (Limon)",
+        "sku": "HYG-004",
+        "category": "Temizlik Ürünleri",
+        "quantity": 2,
+        "unitPrice": 169,
+        "totalPrice": 338,
+        "_id": "68cbf97604f494995f0e1008"
+      }
+    ],
+    "subtotal": 447,
+    "taxAmount": 0,
+    "shippingCost": 50,
+    "discountAmount": 0,
+    "totalAmount": 497,
+    "status": "pending",
+    "paymentStatus": "pending",
+    "paymentMethod": "bank_transfer",
+    "notes": "Website siparişi",
+    "orderDate": "2025-09-18T12:22:14.039Z",
+    "createdBy": null,
+    "createdAt": "2025-09-18T12:22:14.043Z",
+    "updatedAt": "2025-09-18T12:22:14.043Z",
+    "__v": 0
+  },
+  {
+    "_id": "68dbd9e596e30d86f179383a",
+    "orderNumber": "SP2509300001",
+    "customer": {
+      "name": "İlker Kaçmaz",
+      "email": "kacmaz_ilker@hotmail.com",
+      "phone": "5519000311",
+      "company": "ABC TEMİZLİK",
+      "taxId": "1111111111"
+    },
+    "billingAddress": {
+      "name": "İlker Kaçmaz",
+      "company": "ABC TEMİZLİK",
+      "address1": "ADİL MAH. MASUM SOK.",
+      "address2": "",
+      "city": "İlker",
+      "state": "Kaçmaz",
+      "postalCode": "34710",
+      "country": "Türkiye",
+      "phone": "5519000311",
+      "_id": "68dbd9e596e30d86f179383b"
+    },
+    "shippingAddress": {
+      "name": "İlker Kaçmaz",
+      "company": "ABC TEMİZLİK",
+      "address1": "ADİL MAH. MASUM SOK.",
+      "address2": "",
+      "city": "İlker",
+      "state": "Kaçmaz",
+      "postalCode": "34710",
+      "country": "Türkiye",
+      "phone": "5519000311",
+      "_id": "68dbd9e596e30d86f179383c"
+    },
+    "items": [
+      {
+        "productId": "68d554204d3f1634a8e46b7d",
+        "name": "OTO FIRÇASI",
+        "sku": "HYG-26",
+        "category": "Temizlik Ürünleri",
+        "quantity": 10,
+        "unitPrice": 38,
+        "totalPrice": 380,
+        "_id": "68dbd9e596e30d86f179383d"
+      },
+      {
+        "productId": "68d54ffe11325860cfc5f179",
+        "name": "BULAŞIK SÜNGERİ 5Lİ",
+        "sku": "HYG-25",
+        "category": "Temizlik Ürünleri",
+        "quantity": 5,
+        "unitPrice": 18,
+        "totalPrice": 90,
+        "_id": "68dbd9e596e30d86f179383e"
+      },
+      {
+        "productId": "68d54f1dca366bc8ccfcfd9c",
+        "name": "MİKROFİBER TEMİZLİK BEZİ 40x40",
+        "sku": "HYG-24",
+        "category": "Temizlik Ürünleri",
+        "quantity": 5,
+        "unitPrice": 13,
+        "totalPrice": 65,
+        "_id": "68dbd9e596e30d86f179383f"
+      },
+      {
+        "productId": "68d5452eca0db1c4def26cf7",
+        "name": "DOMESTOS ÇAMAŞIR SUYU 750ML",
+        "sku": "HYG-19",
+        "category": "Temizlik Ürünleri",
+        "quantity": 10,
+        "unitPrice": 56,
+        "totalPrice": 560,
+        "_id": "68dbd9e596e30d86f1793840"
+      }
+    ],
+    "subtotal": 1095,
+    "taxAmount": 0,
+    "shippingCost": 0,
+    "discountAmount": 0,
+    "totalAmount": 1095,
+    "status": "pending",
+    "paymentStatus": "pending",
+    "paymentMethod": "bank_transfer",
+    "notes": "Website siparişi",
+    "orderDate": "2025-09-30T13:23:49.756Z",
+    "createdBy": null,
+    "createdAt": "2025-09-30T13:23:49.773Z",
+    "updatedAt": "2025-09-30T13:23:49.773Z",
+    "__v": 0
+  },
+  {
+    "_id": "68e6658a6053e38d5bb1f1cc",
+    "orderNumber": "SP2510080001",
+    "customer": {
+      "name": "ali  kobuz",
+      "email": "alikobuz@yandex.com",
+      "phone": "05546324911",
+      "company": "hygieia",
+      "taxId": "5753638539"
+    },
+    "billingAddress": {
+      "name": "ali  kobuz",
+      "company": "hygieia",
+      "address1": "no:2 kalskdlfjsdl",
+      "address2": "",
+      "city": "istanbul",
+      "state": "kadıköy",
+      "postalCode": "00000",
+      "country": "Türkiye",
+      "phone": "05546324911",
+      "_id": "68e6658a6053e38d5bb1f1cd"
+    },
+    "shippingAddress": {
+      "name": "ali  kobuz",
+      "company": "hygieia",
+      "address1": "no:2 kalskdlfjsdl",
+      "address2": "",
+      "city": "istanbul",
+      "state": "kadıköy",
+      "postalCode": "00000",
+      "country": "Türkiye",
+      "phone": "05546324911",
+      "_id": "68e6658a6053e38d5bb1f1ce"
+    },
+    "items": [
+      {
+        "productId": "68d554204d3f1634a8e46b7d",
+        "name": "Oto Fırçası",
+        "sku": "HYG-26",
+        "category": "Temizlik Ürünleri",
+        "quantity": 2,
+        "unitPrice": 38,
+        "totalPrice": 76,
+        "_id": "68e6658a6053e38d5bb1f1cf"
+      }
+    ],
+    "subtotal": 76,
+    "taxAmount": 0,
+    "shippingCost": 50,
+    "discountAmount": 0,
+    "totalAmount": 126,
+    "status": "pending",
+    "paymentStatus": "pending",
+    "paymentMethod": "bank_transfer",
+    "notes": "Website siparişi",
+    "orderDate": "2025-10-08T13:22:18.236Z",
+    "createdBy": null,
+    "createdAt": "2025-10-08T13:22:18.252Z",
+    "updatedAt": "2025-10-08T13:22:18.252Z",
+    "__v": 0
+  }
+]

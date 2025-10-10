@@ -1,12 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToDatabase } from '../../../lib/mongodb';
-import Order from '../../../models/Order';
-import Product from '../../../models/Product';
+import { Orders, Products } from '../../../lib/filedb';
 
 export async function POST(request: NextRequest) {
   try {
-    await connectToDatabase();
-
     const orderData = await request.json();
 
     // Validate required fields
@@ -30,7 +26,7 @@ export async function POST(request: NextRequest) {
       }
 
       // Get product details and check stock
-      const product = await Product.findById(item.productId);
+      const product = await Products.findById(item.productId).lean();
       if (!product) {
         return NextResponse.json(
           { error: `Ürün bulunamadı: ${item.productId}` },
@@ -60,35 +56,11 @@ export async function POST(request: NextRequest) {
       });
 
       // Update product stock
-      await Product.findByIdAndUpdate(
-        item.productId,
-        { $inc: { stock: -item.quantity } }
-      );
+      Products.updateStock(item.productId, -item.quantity);
     }
-
-    // Generate order number
-    const date = new Date();
-    const year = date.getFullYear().toString().slice(-2);
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    
-    // Find the highest order number for today
-    const prefix = `SP${year}${month}${day}`;
-    const lastOrder = await Order.findOne({
-      orderNumber: { $regex: `^${prefix}` }
-    }).sort({ orderNumber: -1 });
-    
-    let sequence = 1;
-    if (lastOrder) {
-      const lastSequence = parseInt(lastOrder.orderNumber.slice(-4));
-      sequence = lastSequence + 1;
-    }
-    
-    const orderNumber = `${prefix}${sequence.toString().padStart(4, '0')}`;
 
     // Create order with website-specific format
-    const order = new Order({
-      orderNumber,
+    const order = await Orders.create({
       customer: {
         name: `${orderData.customer.name} ${orderData.customer.surname}`.trim(),
         email: orderData.customer.email,
@@ -132,8 +104,6 @@ export async function POST(request: NextRequest) {
       createdBy: null, // Website siparişi
     });
 
-    await order.save();
-
     return NextResponse.json({
       success: true,
       orderNumber: order.orderNumber,
@@ -147,7 +117,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { 
         error: 'Sipariş oluşturulamadı',
-        details: error.message 
+        details: (error as any).message 
       },
       { status: 500 }
     );
@@ -156,8 +126,6 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    await connectToDatabase();
-
     const { searchParams } = new URL(request.url);
     const orderNumber = searchParams.get('orderNumber');
 
@@ -168,7 +136,8 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const order = await Order.findOne({ orderNumber }).lean();
+    const allOrders = await Orders.find().lean();
+    const order = allOrders.find((o: any) => o.orderNumber === orderNumber);
 
     if (!order) {
       return NextResponse.json(

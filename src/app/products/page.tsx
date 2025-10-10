@@ -1,6 +1,4 @@
-import { connectToDatabase } from '../../lib/mongodb';
-import Category from '../../models/Category';
-import Product from '../../models/Product';
+import { Products, Categories } from '../../lib/filedb';
 import { ICategory, IProduct } from '../../types';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -10,64 +8,57 @@ import CategoryIcon from '../../components/CategoryIcon';
 import ProductsClient from './ProductsClient';
 
 async function getCategoriesWithProductCounts(): Promise<(ICategory & { productCount: number })[]> {
-  await connectToDatabase();
-  const categories = await Category.find({ isActive: true }).sort({ order: 1 }).lean();
+  const categories = await Categories.find({ isActive: true }).sort({ order: 1 }).lean();
+  const products = await Products.find({ status: 'active' }).lean();
   
-  // Optimize: Get all product counts in a single aggregation query
-  const productCounts = await Product.aggregate([
-    { $match: { status: 'active' } },
-    { $group: { _id: '$category', count: { $sum: 1 } } }
-  ]);
-
-  // Create a map for faster lookup
-  const countMap = new Map(
-    productCounts.map(item => [item._id, item.count])
-  );
+  // Count products per category
+  const countMap = new Map();
+  products.forEach((product: any) => {
+    const count = countMap.get(product.category) || 0;
+    countMap.set(product.category, count + 1);
+  });
 
   // Combine categories with counts
-  const categoriesWithCounts = categories.map(category => ({
+  const categoriesWithCounts = categories.map((category: any) => ({
     ...category,
     productCount: countMap.get(category.name) || 0
   }));
   
-  return JSON.parse(JSON.stringify(categoriesWithCounts));
+  return categoriesWithCounts;
 }
 
 async function getProducts(categoryId?: string, search?: string, page: number = 1, limit: number = 20): Promise<{ products: IProduct[]; totalCount: number; totalPages: number }> {
-  await connectToDatabase();
-  
-  const query: Record<string, unknown> = { status: 'active' };
+  let products = await Products.find({ status: 'active' }).lean();
   
   if (categoryId) {
     // Find the category name by ID first
-    const category = await Category.findById(categoryId).lean();
-    if (category) {
-      query.category = category.name; // Products store category as string name, not ObjectId
+    const category = await Categories.find({ _id: categoryId }).lean();
+    if (category && category[0]) {
+      products = products.filter((p: any) => p.category === category[0].name);
     }
   }
   
   if (search) {
-    query.$or = [
-      { name: { $regex: search, $options: 'i' } },
-      { description: { $regex: search, $options: 'i' } },
-      { tags: { $in: [new RegExp(search, 'i')] } },
-    ];
+    const searchLower = search.toLowerCase();
+    products = products.filter((p: any) => 
+      p.name.toLowerCase().includes(searchLower) ||
+      p.description?.toLowerCase().includes(searchLower) ||
+      p.tags?.some((tag: string) => tag.toLowerCase().includes(searchLower))
+    );
   }
   
+  // Sort by createdAt (newest first)
+  products.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  
   // Get total count for pagination
-  const totalCount = await Product.countDocuments(query);
+  const totalCount = products.length;
   const totalPages = Math.ceil(totalCount / limit);
   
-  // Get products with pagination
-  const products = await Product.find(query)
-    .sort({ createdAt: -1 })
-    .skip((page - 1) * limit)
-    .limit(limit)
-    .select('name images retailPrice stock category tags sku status slug') // Essential fields only
-    .lean();
+  // Apply pagination
+  const paginatedProducts = products.slice((page - 1) * limit, page * limit);
     
   return {
-    products: JSON.parse(JSON.stringify(products)),
+    products: paginatedProducts,
     totalCount,
     totalPages
   };

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { X, ZoomIn, ZoomOut, RotateCw, ChevronLeft, ChevronRight } from 'lucide-react';
+import { getImageUrl } from '@/lib/utils';
 
 interface ImageZoomProps {
   images: string[];
@@ -227,7 +228,7 @@ export default function ImageZoom({
           }}
         >
           <Image
-            src={images[currentIndex]}
+            src={getImageUrl(images[currentIndex])}
             alt={`${productName} - ${currentIndex + 1}`}
             width={800}
             height={800}
@@ -273,7 +274,7 @@ export default function ImageZoom({
               }`}
             >
               <Image
-                src={image}
+                src={getImageUrl(image)}
                 alt={`${productName} thumbnail ${index + 1}`}
                 fill
                 className="object-contain p-1"

@@ -1,7 +1,5 @@
 import { notFound } from 'next/navigation';
-import { connectToDatabase } from '../../../lib/mongodb';
-import Category from '../../../models/Category';
-import Product from '../../../models/Product';
+import { Categories, Products } from '../../../lib/filedb';
 import { ICategory, IProduct } from '../../../types';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
@@ -9,23 +7,22 @@ import Breadcrumb from '../../../components/Breadcrumb';
 import ProductCard from '../../../components/ProductCard';
 
 async function getCategory(slug: string): Promise<ICategory | null> {
-  await connectToDatabase();
-  const category = await Category.findOne({ slug, isActive: true }).lean();
-  return category ? JSON.parse(JSON.stringify(category)) : null;
+  const category = await Categories.findOne({ slug, isActive: true }).lean();
+  return category;
 }
 
 async function getProducts(categoryName: string): Promise<IProduct[]> {
-  await connectToDatabase();
-  const products = await Product.find({
+  const allProducts = await Products.find({
     category: categoryName,
     status: 'active'
-  })
-  .select('name images retailPrice stock category tags sku status slug')
-  .sort({ createdAt: -1 })
-  .limit(20)
-  .lean();
+  }).lean();
   
-  return JSON.parse(JSON.stringify(products));
+  // Sort by createdAt (newest first)
+  const products = allProducts
+    .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    .slice(0, 20);
+  
+  return products;
 }
 
 interface CategoryPageProps {
@@ -126,7 +123,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 export async function generateMetadata({ params }: CategoryPageProps) {
   try {
     const { slug } = await params;
-    const category = await getCategory(slug);
+    const categories = await Categories.find({ slug, isActive: true }).lean();
+    const category = categories[0];
     
     if (!category) {
       return {

@@ -1,0 +1,99 @@
+[
+  {
+    "_id": "689a1ee84920bc6e0ecbb927",
+    "key": "tax_rate",
+    "value": 0.18,
+    "description": "KDV oranı (%18)",
+    "category": "financial",
+    "isPublic": false,
+    "createdAt": "2025-08-11T16:48:40.700Z",
+    "updatedAt": "2025-09-22T07:12:34.111Z",
+    "data": {
+      "general": {
+        "siteName": "Hygieia Admin Panel",
+        "siteUrl": "https://admin.hygieia.com",
+        "timezone": "Europe/Istanbul",
+        "currency": "TRY",
+        "language": "tr"
+      },
+      "email": {
+        "smtpHost": "smtp-mail.outlook.com",
+        "smtpPort": 587,
+        "smtpUser": "noreply@hygieiatr.com",
+        "smtpPassword": "Fed*55600!",
+        "fromEmail": "noreply@hygieiatr.com",
+        "fromName": "Hygieia - Bildirim Merkezi"
+      },
+      "security": {
+        "sessionTimeout": 3600,
+        "passwordMinLength": 8,
+        "requireTwoFactor": false,
+        "allowRegistration": false,
+        "maxLoginAttempts": 5
+      },
+      "notifications": {
+        "emailNotifications": true,
+        "orderNotifications": true,
+        "stockAlerts": true,
+        "reportNotifications": false
+      },
+      "system": {
+        "maintenanceMode": false,
+        "debugMode": false,
+        "cacheEnabled": true,
+        "autoBackup": false,
+        "backupFrequency": "daily"
+      }
+    }
+  },
+  {
+    "_id": "689a1ee84920bc6e0ecbb928",
+    "key": "min_order_amount",
+    "value": 100,
+    "description": "Minimum sipariş tutarı",
+    "category": "order",
+    "isPublic": true,
+    "createdAt": "2025-08-11T16:48:40.700Z",
+    "updatedAt": "2025-08-11T16:48:40.700Z"
+  },
+  {
+    "_id": "689a1ee84920bc6e0ecbb929",
+    "key": "email_notifications",
+    "value": true,
+    "description": "E-posta bildirimleri",
+    "category": "notification",
+    "isPublic": false,
+    "createdAt": "2025-08-11T16:48:40.700Z",
+    "updatedAt": "2025-08-11T16:48:40.700Z"
+  },
+  {
+    "_id": "689a1ee84920bc6e0ecbb925",
+    "key": "company_name",
+    "value": "Hygieia B2B Platform",
+    "description": "Şirket adı",
+    "category": "company",
+    "isPublic": true,
+    "createdAt": "2025-08-11T16:48:40.700Z",
+    "updatedAt": "2025-08-11T16:48:40.700Z"
+  },
+  {
+    "_id": "689a1ee84920bc6e0ecbb926",
+    "key": "currency",
+    "value": "TRY",
+    "description": "Varsayılan para birimi",
+    "category": "general",
+    "isPublic": true,
+    "createdAt": "2025-08-11T16:48:40.700Z",
+    "updatedAt": "2025-08-11T16:48:40.700Z"
+  },
+  {
+    "_id": "689a1ee84920bc6e0ecbb92a",
+    "key": "auto_approve_orders",
+    "value": false,
+    "description": "Siparişleri otomatik onayla",
+    "category": "order",
+    "isPublic": false,
+    "createdAt": "2025-08-11T16:48:40.700Z",
+    "updatedAt": "2025-08-11T16:48:40.700Z"
+  }
+]

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '../../../lib/mongodb';
-import Product from '../../../models/Product';
+import { Products } from '../../../lib/filedb';
+import fs from 'fs';
+import path from 'path';
 
 // SEO için geliştirilmiş açıklama oluşturucu
 function enhanceDescription(product: any) {
@@ -69,10 +70,8 @@ ${enhancedDesc ? enhancedDesc + ' ' : ''}Kurumsal müşterilerimize özel toplu 
 
 export async function POST() {
   try {
-    await connectToDatabase();
-
     // Tüm aktif ürünleri getir
-    const products = await Product.find({ status: 'active' });
+    const products = await Products.find({ status: 'active' }).lean();
     console.log(`📦 ${products.length} aktif ürün bulundu`);
 
     let updatedCount = 0;
@@ -85,11 +84,8 @@ export async function POST() {
       
       if (currentDesc.length < 100) {
         const enhancedDesc = enhanceDescription(product);
-        
-        await Product.findByIdAndUpdate(product._id, {
-          description: enhancedDesc,
-          updatedAt: new Date()
-        });
+        product.description = enhancedDesc;
+        product.updatedAt = new Date().toISOString();
         
         results.push({
           id: product._id,
@@ -111,11 +107,15 @@ export async function POST() {
       }
     }
 
+    // Güncellenmiş ürünleri dosyaya yaz
+    const dataDir = path.join(process.cwd(), 'data');
+    const filePath = path.join(dataDir, 'products.json');
+    fs.writeFileSync(filePath, JSON.stringify(products, null, 2));
+
     // Örnek güncellenmiş ürün
-    const sampleProduct = await Product.findOne({ 
-      status: 'active',
-      description: { $regex: 'Hygieia kalite garantisi' }
-    });
+    const sampleProduct = products.find((p: any) => 
+      p.status === 'active' && p.description?.includes('Hygieia kalite garantisi')
+    );
 
     return NextResponse.json({
       success: true,
