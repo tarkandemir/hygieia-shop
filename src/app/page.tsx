@@ -1,5 +1,6 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import HashScrollHandler from '../components/HashScrollHandler';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Phone, MessageCircle } from 'lucide-react';
@@ -34,6 +35,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <HashScrollHandler />
       <Header activeLink="home" />
 
       {/* Hero Section */}

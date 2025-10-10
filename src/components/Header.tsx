@@ -42,12 +42,22 @@ export default function Header({ activeLink }: HeaderProps) {
     setIsDropdownOpen(false);
     setIsSearchOpen(false);
     
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+    // Check if we're on the home page
+    const isHomePage = window.location.pathname === '/';
+    
+    if (isHomePage) {
+      // If on home page, just scroll to the element
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    } else {
+      // If not on home page, navigate to home page with hash
+      startLoading();
+      router.push(`/#${targetId}`);
     }
   };
 
@@ -189,29 +199,29 @@ export default function Header({ activeLink }: HeaderProps) {
               )}
             </div>
 
-            <a 
-              href="#about" 
+            <Link 
+              href="/#about" 
               onClick={(e) => handleSmoothScroll(e, 'about')}
               className="hover:text-[#6AF0D2] transition-colors"
             >
               Hakkımızda
-            </a>
+            </Link>
             
-            <a 
-              href="#services" 
+            <Link 
+              href="/#services" 
               onClick={(e) => handleSmoothScroll(e, 'services')}
               className="hover:text-[#6AF0D2] transition-colors"
             >
               Hizmetlerimiz
-            </a>
+            </Link>
             
-            <a 
-              href="#contact" 
+            <Link 
+              href="/#contact" 
               onClick={(e) => handleSmoothScroll(e, 'contact')}
               className="hover:text-[#6AF0D2] transition-colors"
             >
               İletişim
-            </a>
+            </Link>
           </nav>
 
           {/* Right Side Actions */}
