@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '../../../lib/mongodb';
 import Order from '../../../models/Order';
 import Product from '../../../models/Product';
+import { sendEmail, ADMIN_EMAIL } from '../../../lib/email';
+import { generateCustomerOrderEmail, generateAdminOrderNotification } from '../../../lib/emailTemplates';
 
 export async function POST(request: NextRequest) {
   try {
@@ -88,17 +90,19 @@ export async function POST(request: NextRequest) {
     const orderNumber = `${prefix}${sequence.toString().padStart(4, '0')}`;
 
     // Create order with website-specific format
+    const customerFullName = `${orderData.customer.name} ${orderData.customer.surname}`.trim();
+    
     const order = await Order.create({
       orderNumber,
       customer: {
-        name: `${orderData.customer.name} ${orderData.customer.surname}`.trim(),
+        name: customerFullName,
         email: orderData.customer.email,
         phone: orderData.customer.phone,
         company: orderData.customer.company || '',
         taxId: orderData.customer.taxId || '',
       },
       billingAddress: {
-        name: `${orderData.customer.name} ${orderData.customer.surname}`.trim(),
+        name: customerFullName,
         company: orderData.customer.company || '',
         address1: orderData.billingAddress.address1,
         address2: orderData.billingAddress.address2 || '',
@@ -109,7 +113,7 @@ export async function POST(request: NextRequest) {
         phone: orderData.customer.phone,
       },
       shippingAddress: {
-        name: `${orderData.customer.name} ${orderData.customer.surname}`.trim(),
+        name: customerFullName,
         company: orderData.customer.company || '',
         address1: orderData.shippingAddress.address1,
         address2: orderData.shippingAddress.address2 || '',
@@ -131,6 +135,42 @@ export async function POST(request: NextRequest) {
       orderDate: new Date(),
       notes: orderData.notes || 'Website siparişi',
       createdBy: null, // Website siparişi
+    });
+
+    // E-posta gönderimi (asenkron - sipariş oluşturma işlemini bloklamaz)
+    const emailData = {
+      orderNumber: order.orderNumber,
+      customer: {
+        name: customerFullName,
+        email: orderData.customer.email,
+        phone: orderData.customer.phone,
+        company: orderData.customer.company,
+      },
+      billingAddress: order.billingAddress,
+      shippingAddress: order.shippingAddress,
+      items: validatedItems,
+      subtotal: order.subtotal,
+      shippingCost: order.shippingCost,
+      totalAmount: order.totalAmount,
+      orderDate: order.orderDate,
+    };
+
+    // Müşteriye sipariş onay e-postası gönder
+    sendEmail({
+      to: orderData.customer.email,
+      subject: `Sipariş Onayı - ${order.orderNumber}`,
+      html: generateCustomerOrderEmail(emailData),
+    }).catch(error => {
+      console.error('Müşteri e-postası gönderilemedi:', error);
+    });
+
+    // Admin'e yeni sipariş bildirimi gönder
+    sendEmail({
+      to: ADMIN_EMAIL,
+      subject: `🚨 Yeni Sipariş - ${order.orderNumber}`,
+      html: generateAdminOrderNotification(emailData),
+    }).catch(error => {
+      console.error('Admin e-postası gönderilemedi:', error);
     });
 
     return NextResponse.json({
