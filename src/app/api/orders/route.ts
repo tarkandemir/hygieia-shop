@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Orders, Products } from '../../../lib/filedb';
+import { connectToDatabase } from '../../../lib/mongodb';
+import Order from '../../../models/Order';
+import Product from '../../../models/Product';
 
 export async function POST(request: NextRequest) {
   try {
+    // MongoDB bağlantısı
+    await connectToDatabase();
+    
     const orderData = await request.json();
 
     // Validate required fields
@@ -26,7 +31,7 @@ export async function POST(request: NextRequest) {
       }
 
       // Get product details and check stock
-      const product = await Products.findById(item.productId).lean();
+      const product = await Product.findById(item.productId).lean();
       if (!product) {
         return NextResponse.json(
           { error: `Ürün bulunamadı: ${item.productId}` },
@@ -55,12 +60,16 @@ export async function POST(request: NextRequest) {
         totalPrice: itemTotal,
       });
 
-      // Update product stock
-      Products.updateStock(item.productId, -item.quantity);
+      // Update product stock - MongoDB transaction güvenli
+      await Product.findByIdAndUpdate(
+        item.productId,
+        { $inc: { stock: -item.quantity } },
+        { new: true }
+      );
     }
 
     // Create order with website-specific format
-    const order = await Orders.create({
+    const order = await Order.create({
       customer: {
         name: `${orderData.customer.name} ${orderData.customer.surname}`.trim(),
         email: orderData.customer.email,
@@ -126,6 +135,9 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
+    // MongoDB bağlantısı
+    await connectToDatabase();
+    
     const { searchParams } = new URL(request.url);
     const orderNumber = searchParams.get('orderNumber');
 
@@ -136,8 +148,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const allOrders = await Orders.find().lean();
-    const order = allOrders.find((o: any) => o.orderNumber === orderNumber);
+    const order = await Order.findOne({ orderNumber }).lean();
 
     if (!order) {
       return NextResponse.json(
