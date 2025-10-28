@@ -265,16 +265,22 @@ export default function CartPage() {
 
                 {cart.shippingCost === 0 && (
                   <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-6">
-                    <p className="text-sm text-green-800">
+                    <p className="text-sm text-green-800 font-medium">
                       🎉 Ücretsiz kargo kazandınız!
+                    </p>
+                    <p className="text-xs text-green-700 mt-1">
+                      * İstanbul içi teslimatlar için geçerlidir.
                     </p>
                   </div>
                 )}
 
-                {cart.subtotal < 500 && (
+                {cart.subtotal < 3000 && (
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-6">
-                    <p className="text-sm text-blue-800">
-                      {formatPriceSimple(500 - cart.subtotal)} daha ekleyin, ücretsiz kargo kazanın!
+                    <p className="text-sm text-blue-800 font-medium">
+                      {formatPriceSimple(3000 - cart.subtotal)} daha ekleyin, ücretsiz kargo kazanın!
+                    </p>
+                    <p className="text-xs text-blue-700 mt-1">
+                      * İstanbul içi teslimatlar için geçerlidir.
                     </p>
                   </div>
                 )}

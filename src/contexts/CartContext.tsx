@@ -34,7 +34,7 @@ function calculateTotals(items: ICartItem[]): Pick<ICart, 'subtotal' | 'taxAmoun
   // Use proper floating point arithmetic
   const subtotal = Math.round(items.reduce((sum, item) => sum + item.totalPrice, 0) * 100) / 100; // Prices already include VAT
   const taxAmount = 0; // No additional VAT calculation needed
-  const shippingCost = subtotal > 500 ? 0 : 50; // Free shipping over 500 TL
+  const shippingCost = subtotal >= 3000 ? 0 : 50; // Free shipping over 3000 TL (İstanbul için)
   const totalAmount = Math.round((subtotal + shippingCost) * 100) / 100; // Total = products + shipping (no extra VAT)
 
   return {

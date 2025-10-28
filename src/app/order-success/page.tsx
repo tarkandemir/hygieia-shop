@@ -122,8 +122,8 @@ function OrderSuccessContent() {
                   <Phone size={24} />
                 </div>
                 <h4 className="font-semibold mb-2">Telefon</h4>
-                <a href="tel:+902121234567" className="text-[#6AF0D2] hover:underline">
-                  +90 (212) 123 45 67
+                <a href="tel:+905389760902" className="text-[#6AF0D2] hover:underline">
+                  0538 976 09 02
                 </a>
               </div>
               

@@ -42,13 +42,13 @@ export default function HomePage() {
       <section className="relative bg-[#000080] text-white min-h-[682px] flex items-center">        
         <div className="relative container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Hero Image Left - Woman Only */}
+            {/* Hero Image Left - Products Showcase */}
             <div className="relative">
               <Image
-                src="/hero-woman.jpg"
-                alt="Hygieia Professional Woman"
-                width={680}
-                height={652}
+                src="/hero-products.png"
+                alt="Hygieia Ürün Koleksiyonu"
+                width={1093}
+                height={1086}
                 className="w-full h-auto"
                 priority
               />

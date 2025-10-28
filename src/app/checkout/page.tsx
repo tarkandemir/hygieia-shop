@@ -67,36 +67,6 @@ export default function CheckoutPage() {
   ];
 
   // Validation functions
-  const validateTCKN = (tckn: string): boolean => {
-    if (!/^\d{11}$/.test(tckn)) return false;
-    if (tckn[0] === '0') return false;
-    
-    const digits = tckn.split('').map(Number);
-    const sum1 = (digits[0] + digits[2] + digits[4] + digits[6] + digits[8]) * 7;
-    const sum2 = digits[1] + digits[3] + digits[5] + digits[7] + digits[9];
-    const checksum1 = (sum1 - sum2) % 10;
-    const checksum2 = (digits.slice(0, 10).reduce((a, b) => a + b, 0)) % 10;
-    
-    return checksum1 === digits[9] && checksum2 === digits[10];
-  };
-
-  const validateVKN = (vkn: string): boolean => {
-    if (!/^\d{10}$/.test(vkn)) return false;
-    
-    const digits = vkn.split('').map(Number);
-    const weights = [9, 8, 7, 6, 5, 4, 3, 2, 1];
-    let sum = 0;
-    
-    for (let i = 0; i < 9; i++) {
-      sum += digits[i] * weights[i];
-    }
-    
-    const remainder = sum % 11;
-    const checkDigit = remainder < 2 ? remainder : 11 - remainder;
-    
-    return checkDigit === digits[9];
-  };
-
   const validatePhone = (phone: string): boolean => {
     // Türkiye telefon numarası formatları: +905xxxxxxxxx, 05xxxxxxxxx, 5xxxxxxxxx
     const cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
@@ -105,10 +75,6 @@ export default function CheckoutPage() {
 
   const validateEmail = (email: string): boolean => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-
-  const validatePostalCode = (postalCode: string): boolean => {
-    return /^\d{5}$/.test(postalCode);
   };
 
   const validateForm = (): boolean => {
@@ -146,21 +112,6 @@ export default function CheckoutPage() {
       newErrors.phone = 'Geçerli bir Türkiye telefon numarası giriniz (örn: 05xxxxxxxxx)';
     }
 
-    // Vergi No/TC Kimlik validasyonu (opsiyonel ama girilmişse geçerli olmalı)
-    if (customer.taxId && customer.taxId.trim()) {
-      if (customer.taxId.length === 11) {
-        if (!validateTCKN(customer.taxId)) {
-          newErrors.taxId = 'Geçerli bir TC Kimlik No giriniz';
-        }
-      } else if (customer.taxId.length === 10) {
-        if (!validateVKN(customer.taxId)) {
-          newErrors.taxId = 'Geçerli bir Vergi Kimlik No giriniz';
-        }
-      } else {
-        newErrors.taxId = 'TC Kimlik No (11 haneli) veya Vergi Kimlik No (10 haneli) giriniz';
-      }
-    }
-
     // Şirket adı validasyonu (opsiyonel)
     if (customer.company && customer.company.trim().length < 2) {
       newErrors.company = 'Firma adı en az 2 karakter olmalıdır';
@@ -187,12 +138,6 @@ export default function CheckoutPage() {
 
     if (!billingAddress.address1.trim()) {
       newErrors.billingAddress1 = 'Fatura adresi tam adres alanı zorunludur';
-    } else if (billingAddress.address1.trim().length < 10) {
-      newErrors.billingAddress1 = 'Tam adres en az 10 karakter olmalıdır';
-    }
-
-    if (billingAddress.postalCode && billingAddress.postalCode.trim() && !validatePostalCode(billingAddress.postalCode)) {
-      newErrors.billingPostalCode = 'Posta kodu 5 haneli olmalıdır (örn: 34710)';
     }
 
     // Teslimat Adresi validasyonu (sadece farklı ise)
@@ -217,12 +162,6 @@ export default function CheckoutPage() {
 
       if (!shippingAddress.address1.trim()) {
         newErrors.shippingAddress1 = 'Teslimat adresi tam adres alanı zorunludur';
-      } else if (shippingAddress.address1.trim().length < 10) {
-        newErrors.shippingAddress1 = 'Tam adres en az 10 karakter olmalıdır';
-      }
-
-      if (shippingAddress.postalCode && shippingAddress.postalCode.trim() && !validatePostalCode(shippingAddress.postalCode)) {
-        newErrors.shippingPostalCode = 'Posta kodu 5 haneli olmalıdır (örn: 34710)';
       }
     }
 
@@ -241,6 +180,16 @@ export default function CheckoutPage() {
     setIsSubmitting(true);
 
     try {
+      // Teslimat şehri kontrolü
+      const deliveryCity = sameAsbilling ? billingAddress.city : shippingAddress.city;
+      const isIstanbul = deliveryCity.toLowerCase().includes('istanbul') || deliveryCity.toLowerCase().includes('İstanbul');
+      
+      // Kargo ücreti hesaplama - İstanbul için 3000 TL ve üzeri ücretsiz
+      let finalShippingCost = 50; // Varsayılan kargo ücreti
+      if (isIstanbul && cart.subtotal >= 3000) {
+        finalShippingCost = 0; // İstanbul için 3000 TL ve üzeri ücretsiz kargo
+      }
+      
       // Prepare order data
       const orderData = {
         customer: {
@@ -281,7 +230,7 @@ export default function CheckoutPage() {
           productId: item.product._id,
           quantity: item.quantity,
         })),
-        shippingCost: cart.shippingCost,
+        shippingCost: finalShippingCost,
         notes: 'Website siparişi',
       };
 
@@ -475,8 +424,7 @@ export default function CheckoutPage() {
                           setErrors({ ...errors, taxId: '' });
                         }
                       }}
-                      placeholder="TC Kimlik No (11 haneli) veya Vergi No (10 haneli)"
-                      maxLength={11}
+                      placeholder="TC Kimlik No veya Vergi No"
                       className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent ${
                         errors.taxId 
                           ? 'border-red-300 focus:ring-red-200' 
@@ -654,34 +602,6 @@ export default function CheckoutPage() {
                       <p className="mt-1 text-sm text-red-600">{errors.billingAddress1}</p>
                     )}
                   </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Posta Kodu
-                    </label>
-                    <input
-                      type="text"
-                      value={billingAddress.postalCode}
-                      onChange={(e) => {
-                        // Sadece rakam girişine izin ver
-                        const value = e.target.value.replace(/[^0-9]/g, '');
-                        setBillingAddress({ ...billingAddress, postalCode: value });
-                        if (errors.billingPostalCode) {
-                          setErrors({ ...errors, billingPostalCode: '' });
-                        }
-                      }}
-                      placeholder="34710"
-                      maxLength={5}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent ${
-                        errors.billingPostalCode 
-                          ? 'border-red-300 focus:ring-red-200' 
-                          : 'border-gray-200 focus:ring-[#6AF0D2]'
-                      }`}
-                    />
-                    {errors.billingPostalCode && (
-                      <p className="mt-1 text-sm text-red-600">{errors.billingPostalCode}</p>
-                    )}
-                  </div>
                 </div>
               </div>
 
@@ -812,34 +732,6 @@ export default function CheckoutPage() {
                           <p className="mt-1 text-sm text-red-600">{errors.shippingAddress1}</p>
                         )}
                       </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Posta Kodu
-                        </label>
-                        <input
-                          type="text"
-                          value={shippingAddress.postalCode}
-                          onChange={(e) => {
-                            // Sadece rakam girişine izin ver
-                            const value = e.target.value.replace(/[^0-9]/g, '');
-                            setShippingAddress({ ...shippingAddress, postalCode: value });
-                            if (errors.shippingPostalCode) {
-                              setErrors({ ...errors, shippingPostalCode: '' });
-                            }
-                          }}
-                          placeholder="34710"
-                          maxLength={5}
-                          className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent ${
-                            errors.shippingPostalCode 
-                              ? 'border-red-300 focus:ring-red-200' 
-                              : 'border-gray-200 focus:ring-[#6AF0D2]'
-                          }`}
-                        />
-                        {errors.shippingPostalCode && (
-                          <p className="mt-1 text-sm text-red-600">{errors.shippingPostalCode}</p>
-                        )}
-                      </div>
                     </div>
                   </>
                 )}
@@ -878,6 +770,23 @@ export default function CheckoutPage() {
                       {cart.shippingCost === 0 ? 'Ücretsiz' : formatPriceSimple(cart.shippingCost)}
                     </span>
                   </div>
+
+                  {/* Ücretsiz kargo bilgilendirmesi */}
+                  {cart.subtotal >= 3000 && (
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-2">
+                      <p className="text-xs text-green-800">
+                        <strong>İstanbul içi</strong> teslimatlar için ücretsiz kargo!
+                      </p>
+                    </div>
+                  )}
+
+                  {cart.subtotal < 3000 && (
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-2">
+                      <p className="text-xs text-blue-800">
+                        <strong>İstanbul içi</strong> teslimatlar için <strong>{formatPriceSimple(3000 - cart.subtotal)}</strong> daha ekleyin, ücretsiz kargo kazanın!
+                      </p>
+                    </div>
+                  )}
 
                   <div className="border-t border-gray-200 pt-4">
                     <div className="flex justify-between text-lg font-semibold">
