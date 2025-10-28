@@ -68,8 +68,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Generate unique order number
+    const date = new Date();
+    const year = date.getFullYear().toString().slice(-2);
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    
+    const prefix = `SP${year}${month}${day}`;
+    const lastOrder = await Order.findOne({
+      orderNumber: { $regex: `^${prefix}` }
+    }).sort({ orderNumber: -1 }).lean();
+    
+    let sequence = 1;
+    if (lastOrder) {
+      const lastSequence = parseInt(lastOrder.orderNumber.slice(-4));
+      sequence = lastSequence + 1;
+    }
+    
+    const orderNumber = `${prefix}${sequence.toString().padStart(4, '0')}`;
+
     // Create order with website-specific format
     const order = await Order.create({
+      orderNumber,
       customer: {
         name: `${orderData.customer.name} ${orderData.customer.surname}`.trim(),
         email: orderData.customer.email,
