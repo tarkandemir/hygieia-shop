@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '../../../lib/mongodb';
 import Order from '../../../models/Order';
 import Product from '../../../models/Product';
-import { sendEmail, ADMIN_EMAIL } from '../../../lib/email';
+import { sendEmail, ADMIN_EMAILS } from '../../../lib/email';
 import { generateCustomerOrderEmail, generateAdminOrderNotification } from '../../../lib/emailTemplates';
 
 export async function POST(request: NextRequest) {
@@ -164,13 +164,16 @@ export async function POST(request: NextRequest) {
       console.error('Müşteri e-postası gönderilemedi:', error);
     });
 
-    // Admin'e yeni sipariş bildirimi gönder
-    sendEmail({
-      to: ADMIN_EMAIL,
-      subject: `🚨 Yeni Sipariş - ${order.orderNumber}`,
-      html: generateAdminOrderNotification(emailData),
-    }).catch(error => {
-      console.error('Admin e-postası gönderilemedi:', error);
+    // Tüm admin'lere yeni sipariş bildirimi gönder
+    const adminEmailHtml = generateAdminOrderNotification(emailData);
+    ADMIN_EMAILS.forEach(adminEmail => {
+      sendEmail({
+        to: adminEmail,
+        subject: `🚨 Yeni Sipariş - ${order.orderNumber}`,
+        html: adminEmailHtml,
+      }).catch(error => {
+        console.error(`Admin e-postası gönderilemedi (${adminEmail}):`, error);
+      });
     });
 
     return NextResponse.json({

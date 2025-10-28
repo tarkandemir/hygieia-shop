@@ -14,8 +14,10 @@ const SMTP_PASSWORD = process.env.SMTP_PASSWORD || 'Fed*55600!';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'noreply@hygieiatr.com';
 const FROM_NAME = process.env.FROM_NAME || 'Hygieia';
 
-// Admin e-posta adresi
-export const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'info@hygieiatr.com';
+// Admin e-posta adresleri (virgülle ayrılmış)
+// Örnek: "admin1@domain.com,admin2@domain.com,admin3@domain.com"
+const ADMIN_EMAILS_RAW = process.env.ADMIN_EMAIL || 'info@hygieiatr.com';
+export const ADMIN_EMAILS = ADMIN_EMAILS_RAW.split(',').map(email => email.trim()).filter(email => email.length > 0);
 
 // Nodemailer transporter oluştur
 const createTransporter = () => {
