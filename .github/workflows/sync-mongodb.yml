@@ -8,6 +8,10 @@ on:
   # Manuel tetikleme için
   workflow_dispatch:
 
+# GitHub Actions'a repository'ye yazma izni ver
+permissions:
+  contents: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest
