@@ -1,9 +1,9 @@
 name: MongoDB Sync to Files
 
 on:
-  # Her gün saat 03:00'te çalış (UTC)
+  # Her 1 saatte çalış (UTC)
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '0 */1 * * *'
   
   # Manuel tetikleme için
   workflow_dispatch:
