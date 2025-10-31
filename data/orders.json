@@ -335,5 +335,177 @@
     "createdAt": "2025-10-08T13:22:18.252Z",
     "updatedAt": "2025-10-08T13:22:18.252Z",
     "__v": 0
+  },
+  {
+    "_id": "690062d989caf4392bf580cb",
+    "orderNumber": "SP2510280001",
+    "customer": {
+      "name": "tarkan demir",
+      "email": "tarkandemir.94@gmail.com",
+      "phone": "05358144650",
+      "company": "",
+      "taxId": ""
+    },
+    "billingAddress": {
+      "name": "tarkan demir",
+      "company": "",
+      "address1": "sarı",
+      "address2": "",
+      "city": "istanbul",
+      "state": "şişli",
+      "postalCode": "00000",
+      "country": "Türkiye",
+      "phone": "05358144650",
+      "_id": "690062d989caf4392bf580cc"
+    },
+    "shippingAddress": {
+      "name": "tarkan demir",
+      "company": "",
+      "address1": "sarı",
+      "address2": "",
+      "city": "istanbul",
+      "state": "şişli",
+      "postalCode": "00000",
+      "country": "Türkiye",
+      "phone": "05358144650",
+      "_id": "690062d989caf4392bf580cd"
+    },
+    "items": [
+      {
+        "productId": "68d54ffe11325860cfc5f179",
+        "name": "Bulaşık Süngeri 5'li",
+        "sku": "HYG-25",
+        "category": "Temizlik Ürünleri",
+        "quantity": 1,
+        "unitPrice": 18,
+        "totalPrice": 18,
+        "_id": "690062d989caf4392bf580ce"
+      }
+    ],
+    "subtotal": 18,
+    "taxAmount": 0,
+    "shippingCost": 50,
+    "discountAmount": 0,
+    "totalAmount": 68,
+    "status": "pending",
+    "paymentStatus": "pending",
+    "paymentMethod": "bank_transfer",
+    "notes": "Website siparişi",
+    "orderDate": "2025-10-28T06:29:45.804Z",
+    "createdBy": null,
+    "createdAt": "2025-10-28T06:29:45.818Z",
+    "updatedAt": "2025-10-28T06:29:45.818Z",
+    "__v": 0
+  },
+  {
+    "_id": "690065ba6290e42c47319618",
+    "orderNumber": "SP2510280002",
+    "customer": {
+      "name": "tarkan demir",
+      "email": "tarkandemir.94@gmail.com",
+      "phone": "05358144650",
+      "company": "",
+      "taxId": ""
+    },
+    "billingAddress": {
+      "name": "tarkan demir",
+      "company": "",
+      "address1": "sarı",
+      "address2": "",
+      "city": "istanbul",
+      "state": "şişli",
+      "postalCode": "00000",
+      "country": "Türkiye",
+      "phone": "05358144650",
+      "_id": "690065ba6290e42c47319619"
+    },
+    "shippingAddress": {
+      "name": "tarkan demir",
+      "company": "",
+      "address1": "sarı",
+      "address2": "",
+      "city": "istanbul",
+      "state": "şişli",
+      "postalCode": "00000",
+      "country": "Türkiye",
+      "phone": "05358144650",
+      "_id": "690065ba6290e42c4731961a"
+    },
+    "items": [
+      {
+        "productId": "68ff3dafb37d2b3c6930f7fa",
+        "name": "Joypack Yüzey Temizleyici (Beyaz Sabun) 5 Litre",
+        "sku": "HYG-35",
+        "category": "Temizlik Ürünleri",
+        "quantity": 2,
+        "unitPrice": 99,
+        "totalPrice": 198,
+        "_id": "690065ba6290e42c4731961b"
+      },
+      {
+        "productId": "68ff3316bbccfec3c364e289",
+        "name": "Joypack Hypo Çamaşır Suyu 5 Litre",
+        "sku": "HYG-30",
+        "category": "Temizlik Ürünleri",
+        "quantity": 2,
+        "unitPrice": 105,
+        "totalPrice": 210,
+        "_id": "690065ba6290e42c4731961c"
+      },
+      {
+        "productId": "68ee2d2bf93a28d290b04092",
+        "name": "Doğuş Karadeniz Tiryaki Çay 1000 Gr.",
+        "sku": "HYG-500",
+        "category": "Gıda & İçecek",
+        "quantity": 2,
+        "unitPrice": 245,
+        "totalPrice": 490,
+        "_id": "690065ba6290e42c4731961d"
+      },
+      {
+        "productId": "68d54ffe11325860cfc5f179",
+        "name": "Bulaşık Süngeri 5'li",
+        "sku": "HYG-25",
+        "category": "Temizlik Ürünleri",
+        "quantity": 2,
+        "unitPrice": 18,
+        "totalPrice": 36,
+        "_id": "690065ba6290e42c4731961e"
+      },
+      {
+        "productId": "68d54cef7499af81822dd389",
+        "name": "Beybi İş Eldiveni PN3",
+        "sku": "HYG-23",
+        "category": "Makine & Ekipman",
+        "quantity": 2,
+        "unitPrice": 27.5,
+        "totalPrice": 55,
+        "_id": "690065ba6290e42c4731961f"
+      },
+      {
+        "productId": "68d54bb5e5a0c655d5c58930",
+        "name": "Plastik Bardak 180 cc 100 lü",
+        "sku": "HYG-22",
+        "category": "Ofis Malzemeleri",
+        "quantity": 1,
+        "unitPrice": 18,
+        "totalPrice": 18,
+        "_id": "690065ba6290e42c47319620"
+      }
+    ],
+    "subtotal": 1007,
+    "taxAmount": 0,
+    "shippingCost": 50,
+    "discountAmount": 0,
+    "totalAmount": 1057,
+    "status": "pending",
+    "paymentStatus": "pending",
+    "paymentMethod": "bank_transfer",
+    "notes": "Website siparişi",
+    "orderDate": "2025-10-28T06:42:02.815Z",
+    "createdBy": null,
+    "createdAt": "2025-10-28T06:42:02.830Z",
+    "updatedAt": "2025-10-28T06:42:02.830Z",
+    "__v": 0
   }
 ]
