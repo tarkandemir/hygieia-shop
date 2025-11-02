@@ -78,9 +78,18 @@ async function migrateImages() {
             errorCount++;
           }
         } else {
-          // Already a path/URL, keep it
-          newImagePaths.push(img);
-          console.log(`  ✓ Kept existing path: ${img}`);
+          // Already a path/URL - check if file exists
+          const imagePath = img.replace('products/', '');
+          const filepath = path.join(imagesDir, imagePath);
+          
+          if (fs.existsSync(filepath)) {
+            newImagePaths.push(img);
+            console.log(`  ✓ Kept existing path: ${img} (file exists)`);
+          } else {
+            newImagePaths.push(img);
+            console.log(`  ⚠️  Path exists in DB but file missing: ${img}`);
+            console.log(`      Expected location: ${filepath}`);
+          }
         }
       }
       
