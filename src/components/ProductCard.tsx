@@ -7,7 +7,7 @@ import { IProduct } from '@/types';
 import { useCart } from '@/contexts/CartContext';
 import { useToast } from '@/components/ToastContainer';
 import { useLoading } from '@/contexts/LoadingContext';
-import { formatPriceSimple, getImageUrl, getOptimizedImageUrl, generateProductSlug } from '@/lib/utils';
+import { formatPriceSimple, getImageUrl, getOptimizedImageUrl, generateProductSlug, getPlaceholderImageUrl } from '@/lib/utils';
 import { Minus, Plus, ShoppingCart } from 'lucide-react';
 
 interface ProductCardProps {
@@ -20,6 +20,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { startLoading } = useLoading();
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   const handleProductClick = () => {
     startLoading();
@@ -73,7 +74,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <Link href={productUrl} onClick={handleProductClick} className="block">
         <div className="relative w-full h-48 bg-gray-50">
           <Image
-            src={getImageUrl(product.images[0])}
+            src={imageError ? getPlaceholderImageUrl(product.name, 300) : getImageUrl(product.images[0])}
             alt={product.name}
             fill
             className="object-contain p-4"
@@ -83,6 +84,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
             quality={75}
             priority={false}
+            onError={() => setImageError(true)}
           />
         </div>
       </Link>

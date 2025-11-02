@@ -97,3 +97,16 @@ export function getOptimizedImageUrl(imagePath: string, width: number = 400, qua
   const basePath = imagePath.startsWith('/images/') ? imagePath : `/images/${imagePath}`;
   return `/_next/image?url=${encodeURIComponent(basePath)}&w=${width}&q=${quality}`;
 }
+
+/**
+ * Generates a placeholder image URL using placehold.co service
+ * @param text - The text to display on the placeholder (usually product name)
+ * @param width - Width of the placeholder image
+ * @param height - Height of the placeholder image (defaults to width for square images)
+ * @returns URL string for placeholder image
+ */
+export function getPlaceholderImageUrl(text: string, width: number = 600, height?: number): string {
+  const h = height || width;
+  const encodedText = encodeURIComponent(text);
+  return `https://placehold.co/${width}x${h}/EEE/31343C?text=${encodedText}`;
+}

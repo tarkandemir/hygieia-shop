@@ -8,13 +8,14 @@ import Footer from '../../components/Footer';
 import Breadcrumb from '../../components/Breadcrumb';
 import { useCart } from '../../contexts/CartContext';
 import { useToast } from '../../components/ToastContainer';
-import { formatPriceSimple, getImageUrl } from '../../lib/utils';
+import { formatPriceSimple, getImageUrl, getPlaceholderImageUrl } from '../../lib/utils';
 import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft } from 'lucide-react';
 
 export default function CartPage() {
   const { cart, updateQuantity, removeFromCart, clearCart, getItemCount } = useCart();
   const { showToast } = useToast();
   const [isClearing, setIsClearing] = useState(false);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
   const breadcrumbItems = [
     { label: 'Anasayfa', href: '/' },
@@ -155,11 +156,12 @@ export default function CartPage() {
                       {/* Product Image */}
                       <div className="flex-shrink-0">
                         <Image
-                          src={getImageUrl(item.product.images[0])}
+                          src={imageErrors[item.product._id] ? getPlaceholderImageUrl(item.product.name, 80) : getImageUrl(item.product.images[0])}
                           alt={item.product.name}
                           width={80}
                           height={80}
                           className="w-20 h-20 object-contain bg-gray-50 rounded"
+                          onError={() => setImageErrors(prev => ({ ...prev, [item.product._id]: true }))}
                         />
                       </div>
 

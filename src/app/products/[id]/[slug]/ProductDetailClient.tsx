@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { IProduct, ICategory } from '../../../../types';
 import { useCart } from '../../../../contexts/CartContext';
 import { useToast } from '../../../../components/ToastContainer';
-import { formatPriceSimple, getImageUrl, getOptimizedImageUrl } from '../../../../lib/utils';
+import { formatPriceSimple, getImageUrl, getOptimizedImageUrl, getPlaceholderImageUrl } from '../../../../lib/utils';
 import ProductCard from '../../../../components/ProductCard';
 import ImageZoom from '../../../../components/ImageZoom';
 import { 
@@ -36,6 +36,7 @@ export default function ProductDetailClient({
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isAdding, setIsAdding] = useState(false);
   const [isZoomOpen, setIsZoomOpen] = useState(false);
+  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
 
   const handleAddToCart = async () => {
     setIsAdding(true);
@@ -93,7 +94,7 @@ export default function ProductDetailClient({
         {/* Main Image */}
         <div className="relative bg-gray-50 rounded-lg overflow-hidden cursor-zoom-in">
           <Image
-            src={getImageUrl(images[selectedImageIndex])}
+            src={imageErrors[selectedImageIndex] ? getPlaceholderImageUrl(product.name, 600) : getImageUrl(images[selectedImageIndex])}
             alt={product.name}
             width={600}
             height={600}
@@ -102,6 +103,7 @@ export default function ProductDetailClient({
             priority={true}
             quality={75}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+            onError={() => setImageErrors(prev => ({ ...prev, [selectedImageIndex]: true }))}
           />
             
           {/* Zoom Button */}
@@ -156,7 +158,7 @@ export default function ProductDetailClient({
                 title="Çift tıkla: Büyüt"
               >
                 <Image
-                  src={getImageUrl(image)}
+                  src={imageErrors[index] ? getPlaceholderImageUrl(product.name, 80) : getImageUrl(image)}
                   alt={`${product.name} ${index + 1}`}
                   width={80}
                   height={80}
@@ -164,6 +166,7 @@ export default function ProductDetailClient({
                   loading="lazy"
                   quality={75}
                   sizes="80px"
+                  onError={() => setImageErrors(prev => ({ ...prev, [index]: true }))}
                 />
               </button>
             ))}
