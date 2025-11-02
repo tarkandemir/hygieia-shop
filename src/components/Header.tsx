@@ -23,6 +23,7 @@ export default function Header({ activeLink }: HeaderProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [isClient, setIsClient] = useState(false);
   const [isBannerVisible, setIsBannerVisible] = useState(true);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
 
   // Fix hydration mismatch by ensuring client-only rendering for dynamic content
   useEffect(() => {
@@ -108,6 +109,33 @@ export default function Header({ activeLink }: HeaderProps) {
     }
   };
 
+  const handleDropdownMouseEnter = () => {
+    // Clear any existing timeout
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+    setIsDropdownOpen(true);
+    setIsSearchOpen(false);
+  };
+
+  const handleDropdownMouseLeave = () => {
+    // Add a small delay before closing to prevent accidental closing
+    const timeout = setTimeout(() => {
+      setIsDropdownOpen(false);
+    }, 200);
+    setHoverTimeout(timeout);
+  };
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeout) {
+        clearTimeout(hoverTimeout);
+      }
+    };
+  }, [hoverTimeout]);
+
   return (
     <>
       {/* Free Shipping Banner */}
@@ -158,7 +186,11 @@ export default function Header({ activeLink }: HeaderProps) {
             </Link>
 
             {/* Products Dropdown */}
-            <div className="relative">
+            <div 
+              className="relative"
+              onMouseEnter={handleDropdownMouseEnter}
+              onMouseLeave={handleDropdownMouseLeave}
+            >
               <button
                 onClick={() => {
                   setIsDropdownOpen(!isDropdownOpen);
@@ -169,11 +201,11 @@ export default function Header({ activeLink }: HeaderProps) {
                 }`}
               >
                 <span>Ürünler</span>
-                <ChevronDown size={16} />
+                <ChevronDown size={16} className={`transform transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {isDropdownOpen && isClient && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white text-gray-900 rounded-lg shadow-lg z-50">
+                <div className="absolute top-full left-0 mt-2 w-64 bg-white text-gray-900 rounded-lg shadow-lg z-50 animate-fadeIn">
                   <div className="py-2">
                     <button
                       onClick={() => handleNavigationClick('/products')}
@@ -183,9 +215,11 @@ export default function Header({ activeLink }: HeaderProps) {
                         <div className="w-6 h-6 bg-gray-200 rounded flex items-center justify-center">
                           <span className="text-xs">📦</span>
                         </div>
-                        <span>Tüm Ürünler</span>
+                        <span className="font-medium">Tüm Ürünler</span>
                       </div>
                     </button>
+                    
+                    <div className="my-1 border-t border-gray-100"></div>
                     
                     {categories
                       .filter(category => category.productCount > 0)
@@ -201,10 +235,12 @@ export default function Header({ activeLink }: HeaderProps) {
                             style={{ backgroundColor: category.color || '#6AF0D2' }}
                           >
                             {category.icon === 'cube' && '📦'}
-                            {category.icon === 'cleaning' && '🧽'}
-                            {category.icon === 'paper' && '📄'}
-                            {category.icon === 'food' && '🍽️'}
-                            {category.icon === 'office' && '🖥️'}
+                            {category.icon === 'beaker' && '🧪'}
+                            {category.icon === 'cake' && '🍰'}
+                            {category.icon === 'cog-6-tooth' && '⚙️'}
+                            {category.icon === 'briefcase' && '💼'}
+                            {category.icon === 'heart' && '❤️'}
+                            {!['cube', 'beaker', 'cake', 'cog-6-tooth', 'briefcase', 'heart'].includes(category.icon) && '📦'}
                           </div>
                           <span>{category.name}</span>
                         </div>
