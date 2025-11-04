@@ -64,6 +64,40 @@
     "dimensions": {}
   },
   {
+    "_id": "689d92c8855c7dcb3fa6cbf4",
+    "name": "Pril Bulaşık Deterjanı 4 Lt. (Limon)",
+    "description": "Pril Bulaşık Deterjanı 4 Lt. (Limon), hijyen ve temizlik standartlarınızı en üst seviyeye çıkarır. PRİL, BULAŞIK DETERJANI, 4 LT. özellikleri ile Yüksek kaliteli formülasyonu sayesinde etkili temizlik sağlar. \n\nEv, ofis ve endüstriyel alanlarda güvenle kullanılabilir. Hygieia kalite garantisi ile sunulan bu ürün, uygun fiyatla satın alabilirsiniz. \n\nPRİL BULAŞIK DETERJANI 4 LT. (LİMON) Kurumsal müşterilerimize özel toplu satış avantajları mevcuttur. Hızlı teslimat ve güvenilir hizmet anlayışımızla, ihtiyacınız olan temizlik ürünleri ürünlerini zamanında teslim alabilirsiniz.\n\nÜrün hakkında detaylı bilgi almak ve özel fiyat teklifi için bizimle iletişime geçebilirsiniz.",
+    "sku": "HYG-4",
+    "category": "Temizlik Ürünleri",
+    "wholesalePrice": 145,
+    "retailPrice": 175,
+    "stock": 100,
+    "minStock": 0,
+    "unit": "adet",
+    "supplier": {
+      "name": "HYGİEİA İÇ VE DIŞ TİCARET A.Ş.",
+      "contact": "ALİ KOBUZ",
+      "email": "alikobuz@hygieiatr.com",
+      "phone": "+905389760902"
+    },
+    "tags": [
+      "PRİL",
+      "BULAŞIK DETERJANI",
+      "4 LT.",
+      "LİMON"
+    ],
+    "status": "active",
+    "images": [
+      "products/hyg-004-1.jpeg",
+      "products/hyg-004-2.jpeg",
+      "products/hyg-004-3.jpeg"
+    ],
+    "createdAt": "2025-08-14T07:39:52.481Z",
+    "updatedAt": "2025-10-14T10:26:53.875Z",
+    "__v": 0,
+    "dimensions": {}
+  },
+  {
     "_id": "689d996d048ddcf8334b9653",
     "name": "Fairy Bulaşık 650 ML. (Limon)",
     "description": "Fairy Bulaşık 650 ML. (Limon), hijyen ve temizlik standartlarınızı en üst seviyeye çıkarır. FAİRY, BULAŞIK DETERJANI, 650 ML. özellikleri ile Yüksek kaliteli formülasyonu sayesinde etkili temizlik sağlar. \n\nEv, ofis ve endüstriyel alanlarda güvenle kullanılabilir. Hygieia kalite garantisi ile sunulan bu ürün, uygun fiyatla satın alabilirsiniz. \n\nFARİY BULAŞIK 650ML Kurumsal müşterilerimize özel toplu satış avantajları mevcuttur. Hızlı teslimat ve güvenilir hizmet anlayışımızla, ihtiyacınız olan temizlik ürünleri ürünlerini zamanında teslim alabilirsiniz.\n\nÜrün hakkında detaylı bilgi almak ve özel fiyat teklifi için bizimle iletişime geçebilirsiniz.",
@@ -100,47 +134,13 @@
     "dimensions": {}
   },
   {
-    "_id": "689d92c8855c7dcb3fa6cbf4",
-    "name": "Pril Bulaşık Deterjanı 4 Lt. (Limon)",
-    "description": "Pril Bulaşık Deterjanı 4 Lt. (Limon), hijyen ve temizlik standartlarınızı en üst seviyeye çıkarır. PRİL, BULAŞIK DETERJANI, 4 LT. özellikleri ile Yüksek kaliteli formülasyonu sayesinde etkili temizlik sağlar. \n\nEv, ofis ve endüstriyel alanlarda güvenle kullanılabilir. Hygieia kalite garantisi ile sunulan bu ürün, uygun fiyatla satın alabilirsiniz. \n\nPRİL BULAŞIK DETERJANI 4 LT. (LİMON) Kurumsal müşterilerimize özel toplu satış avantajları mevcuttur. Hızlı teslimat ve güvenilir hizmet anlayışımızla, ihtiyacınız olan temizlik ürünleri ürünlerini zamanında teslim alabilirsiniz.\n\nÜrün hakkında detaylı bilgi almak ve özel fiyat teklifi için bizimle iletişime geçebilirsiniz.",
-    "sku": "HYG-4",
-    "category": "Temizlik Ürünleri",
-    "wholesalePrice": 145,
-    "retailPrice": 175,
-    "stock": 100,
-    "minStock": 0,
-    "unit": "adet",
-    "supplier": {
-      "name": "HYGİEİA İÇ VE DIŞ TİCARET A.Ş.",
-      "contact": "ALİ KOBUZ",
-      "email": "alikobuz@hygieiatr.com",
-      "phone": "+905389760902"
-    },
-    "tags": [
-      "PRİL",
-      "BULAŞIK DETERJANI",
-      "4 LT.",
-      "LİMON"
-    ],
-    "status": "active",
-    "images": [
-      "products/hyg-004-1.jpeg",
-      "products/hyg-004-2.jpeg",
-      "products/hyg-004-3.jpeg"
-    ],
-    "createdAt": "2025-08-14T07:39:52.481Z",
-    "updatedAt": "2025-10-14T10:26:53.875Z",
-    "__v": 0,
-    "dimensions": {}
-  },
-  {
-    "_id": "68d546128b4a6bf81f1a3018",
-    "name": "Fairy Bulaşık Deterjanı 650 ml",
-    "description": "650ML Fairy Bulaşık Deterjanı Limonlu",
-    "sku": "HYG-20",
-    "category": "Temizlik Ürünleri",
-    "wholesalePrice": 59.89,
-    "retailPrice": 71.9,
+    "_id": "68d51539161b71295b3bdd39",
+    "name": "Lipa Dispanser Z Havlu 200' Lü",
+    "description": "17GR. 21x22,5CM.  12x200. ",
+    "sku": "HYG-6",
+    "category": "Kağıt Ürünleri",
+    "wholesalePrice": 377.57,
+    "retailPrice": 455,
     "stock": 50,
     "minStock": 0,
     "unit": "adet",
@@ -148,20 +148,48 @@
       "name": "Hygieia",
       "contact": "Ali Kobuz",
       "email": "alikobuz@hygieiatr.com",
-      "phone": "+905389760902"
+      "phone": "05389760902"
     },
     "tags": [
-      "FAIRY",
-      "BULAŞIK DETERJANI",
-      "650ML",
-      "LİMONLU"
+      "Z HAVLU, DİSPENSER PEÇETE"
     ],
     "status": "active",
     "images": [
-      "products/hyg-20-1.jpeg"
+      "products/hyg-6-1.webp"
     ],
-    "createdAt": "2025-09-25T13:39:30.737Z",
-    "updatedAt": "2025-10-07T13:09:23.602Z",
+    "createdAt": "2025-09-25T10:11:05.747Z",
+    "updatedAt": "2025-10-14T10:28:09.942Z",
+    "__v": 0,
+    "dimensions": {}
+  },
+  {
+    "_id": "68d5171fe8f832b0c40dc088",
+    "name": "Dispanser Z Havlu 200'Lü 12x200",
+    "description": "16GR. 20,5x21CM. 1 KOLİ 12x200=2400 ADET",
+    "sku": "HYG-7",
+    "category": "Kağıt Ürünleri",
+    "wholesalePrice": 312,
+    "retailPrice": 374.4,
+    "stock": 100,
+    "minStock": 0,
+    "unit": "adet",
+    "supplier": {
+      "name": "Hygieia",
+      "contact": "Ali Kobuz",
+      "email": "alikobuz@hygieiatr.com",
+      "phone": "05389760902"
+    },
+    "tags": [
+      "DİSPENSER PEÇETE, Z KATLAMA",
+      "DİSPANSER PEÇETE",
+      "Z KATLAMA"
+    ],
+    "status": "active",
+    "images": [
+      "products/hyg-7-1.jpeg"
+    ],
+    "createdAt": "2025-09-25T10:19:11.329Z",
+    "updatedAt": "2025-10-09T13:57:11.787Z",
     "__v": 0,
     "dimensions": {}
   },
@@ -197,354 +225,6 @@
     ],
     "createdAt": "2025-09-25T10:47:01.740Z",
     "updatedAt": "2025-10-09T13:41:04.575Z",
-    "__v": 0,
-    "dimensions": {}
-  },
-  {
-    "_id": "68d53da74d203f5a93744d38",
-    "name": "Porçöz 1 Litre",
-    "description": "1 Litre Porçöz",
-    "sku": "HYG-15",
-    "category": "Temizlik Ürünleri",
-    "wholesalePrice": 46.76,
-    "retailPrice": 56.11,
-    "stock": 50,
-    "minStock": 0,
-    "unit": "adet",
-    "weight": 0.99,
-    "supplier": {
-      "name": "Hygieia",
-      "contact": "Ali Kobuz",
-      "email": "alikobuz@hygieiatr.com",
-      "phone": "+905389760902"
-    },
-    "tags": [
-      "PORÇÖZ",
-      "KİREÇ SÖKÜCÜ"
-    ],
-    "status": "active",
-    "images": [
-      "products/hyg-15-1.jpeg"
-    ],
-    "createdAt": "2025-09-25T13:03:35.343Z",
-    "updatedAt": "2025-10-07T13:20:47.347Z",
-    "__v": 0,
-    "dimensions": {}
-  },
-  {
-    "_id": "68d53ede4d203f5a93744d75",
-    "name": "Cif Krem Limon 750 ml",
-    "description": "750 ml CİF KREM LİMON",
-    "sku": "HYG-17",
-    "category": "Temizlik Ürünleri",
-    "wholesalePrice": 61.88,
-    "retailPrice": 74.25,
-    "stock": 50,
-    "minStock": 0,
-    "unit": "adet",
-    "weight": 0,
-    "supplier": {
-      "name": "Hygieia",
-      "contact": "Ali Kobuz",
-      "email": "alikobuz@hygieiatr.com",
-      "phone": "+905389760902"
-    },
-    "tags": [
-      "LİMON",
-      "750ML",
-      "CİF KREM",
-      "CİF"
-    ],
-    "status": "active",
-    "images": [
-      "products/hyg-17-1.webp"
-    ],
-    "createdAt": "2025-09-25T13:08:46.085Z",
-    "updatedAt": "2025-10-07T13:18:02.152Z",
-    "__v": 0,
-    "dimensions": {}
-  },
-  {
-    "_id": "68d544ae8b4a6bf81f1a2fee",
-    "name": "Cif Power Shine Mutfak Sprey 750 ml",
-    "description": "750 ml Cif Power Shine Mutfak Spreyi",
-    "sku": "HYG-18",
-    "category": "Temizlik Ürünleri",
-    "wholesalePrice": 103.58,
-    "retailPrice": 125,
-    "stock": 48,
-    "minStock": 0,
-    "unit": "adet",
-    "supplier": {
-      "name": "Hygieia",
-      "contact": "Ali Kobuz",
-      "email": "alikobuz@hygieiatr.com",
-      "phone": "+905389760902"
-    },
-    "tags": [
-      "CİF",
-      "POWER SHINE MUTFAK",
-      "750ML",
-      "TEMİZLEYİCİ",
-      "POWER SHİNE",
-      "SPREY"
-    ],
-    "status": "active",
-    "images": [
-      "products/hyg-18-1.jpeg"
-    ],
-    "createdAt": "2025-09-25T13:33:34.869Z",
-    "updatedAt": "2025-10-07T13:15:25.671Z",
-    "__v": 0,
-    "dimensions": {}
-  },
-  {
-    "_id": "68d54bb5e5a0c655d5c58930",
-    "name": "Plastik Bardak 180 cc 100 lü",
-    "description": "PLASTİK BARDAK, 100LÜ, 180CC",
-    "sku": "HYG-22",
-    "category": "Ofis Malzemeleri",
-    "wholesalePrice": 14.58,
-    "retailPrice": 18,
-    "stock": 49,
-    "minStock": 0,
-    "unit": "adet",
-    "supplier": {
-      "name": "Hygieia",
-      "contact": "Ali Kobuz",
-      "email": "alikobuz@hygieiatr.com",
-      "phone": "+905389760902"
-    },
-    "tags": [
-      "PLASTİK BARDAK",
-      "100LÜ",
-      "LİNDERA",
-      "180CC"
-    ],
-    "status": "active",
-    "images": [
-      "products/hyg-22-1.jpeg"
-    ],
-    "createdAt": "2025-09-25T14:03:33.777Z",
-    "updatedAt": "2025-10-28T06:42:02.471Z",
-    "__v": 0,
-    "dimensions": {}
-  },
-  {
-    "_id": "68d54f1dca366bc8ccfcfd9c",
-    "name": "Mikrofiber Temizlik Bezi 40x40 Cm",
-    "description": "MİKROFİBER TEMİZLİK BEZİ, 40x40 ÖLÇÜ",
-    "sku": "HYG-24",
-    "category": "Temizlik Ürünleri",
-    "wholesalePrice": 10.73,
-    "retailPrice": 13,
-    "stock": 45,
-    "minStock": 0,
-    "unit": "adet",
-    "supplier": {
-      "name": "Hygieia",
-      "contact": "Ali Kobuz",
-      "email": "alikobuz@hygieiatr.com",
-      "phone": "+905389760902"
-    },
-    "tags": [
-      "MİKROFİBER",
-      "TEMİZLİK BEZİ",
-      "40x40"
-    ],
-    "status": "active",
-    "images": [
-      "products/hyg-24-1.jpeg"
-    ],
-    "createdAt": "2025-09-25T14:18:05.462Z",
-    "updatedAt": "2025-10-07T12:55:02.082Z",
-    "__v": 0,
-    "dimensions": {}
-  },
-  {
-    "_id": "68d51539161b71295b3bdd39",
-    "name": "Lipa Dispanser Z Havlu 200' Lü",
-    "description": "17GR. 21x22,5CM.  12x200. ",
-    "sku": "HYG-6",
-    "category": "Kağıt Ürünleri",
-    "wholesalePrice": 377.57,
-    "retailPrice": 455,
-    "stock": 50,
-    "minStock": 0,
-    "unit": "adet",
-    "supplier": {
-      "name": "Hygieia",
-      "contact": "Ali Kobuz",
-      "email": "alikobuz@hygieiatr.com",
-      "phone": "05389760902"
-    },
-    "tags": [
-      "Z HAVLU, DİSPENSER PEÇETE"
-    ],
-    "status": "active",
-    "images": [
-      "products/hyg-6-1.webp"
-    ],
-    "createdAt": "2025-09-25T10:11:05.747Z",
-    "updatedAt": "2025-10-14T10:28:09.942Z",
-    "__v": 0,
-    "dimensions": {}
-  },
-  {
-    "_id": "68d52443cebad6b9d67f464f",
-    "name": "Nergis Dispanser Peçete 18x250",
-    "description": "17x21 cm   18x250 Adet Nergis Dispanser Peçete",
-    "sku": "HYG-12",
-    "category": "Kağıt Ürünleri",
-    "wholesalePrice": 201.25,
-    "retailPrice": 241.5,
-    "stock": 50,
-    "minStock": 0,
-    "unit": "adet",
-    "supplier": {
-      "name": "Hygieia",
-      "contact": "Ali Kobuz",
-      "email": "alikobuz@hygieiatr.com",
-      "phone": "05389760902"
-    },
-    "tags": [
-      "NERGİS",
-      "DİSPANSER PEÇETE",
-      "17X21 CM",
-      "18X250 ADET"
-    ],
-    "status": "active",
-    "images": [
-      "products/hyg-12-1.jpeg"
-    ],
-    "createdAt": "2025-09-25T11:15:15.886Z",
-    "updatedAt": "2025-10-07T14:19:18.440Z",
-    "__v": 0,
-    "dimensions": {}
-  },
-  {
-    "_id": "68d5426ed4ae696d8563c5bd",
-    "name": "Cif Krem Çamaşır Suyu Katkılı 750 ml",
-    "description": "ÇAMAŞIR SUYU KATKILI CİF 750ML",
-    "sku": "HYG-02",
-    "category": "Temizlik Ürünleri",
-    "wholesalePrice": 61.8,
-    "retailPrice": 74.16,
-    "stock": 50,
-    "minStock": 0,
-    "unit": "adet",
-    "supplier": {
-      "name": "Hygieia",
-      "contact": "Ali Kobuz",
-      "email": "alikobuz@hygieiatr.com",
-      "phone": "+905389760902"
-    },
-    "tags": [
-      "CİF KREM",
-      "ÇAMAŞIR SUYU KATKILI",
-      "750ML",
-      "CİF"
-    ],
-    "status": "active",
-    "images": [
-      "products/hyg-02-1.jpeg"
-    ],
-    "createdAt": "2025-09-25T13:23:58.537Z",
-    "updatedAt": "2025-10-07T13:16:32.719Z",
-    "__v": 0,
-    "dimensions": {}
-  },
-  {
-    "_id": "68d548c5d4ae696d8563c6c3",
-    "name": "Sleepy Yüzey Temizlik Havlusu&Mendili 100'lü",
-    "description": "YÜZEY TEMİZLİK HAVLUSU, TÜM YÜZEYLER, 100LÜ",
-    "sku": "HYG-21",
-    "category": "Temizlik Ürünleri",
-    "wholesalePrice": 75,
-    "retailPrice": 93.99,
-    "stock": 50,
-    "minStock": 0,
-    "unit": "adet",
-    "supplier": {
-      "name": "Hygieia",
-      "contact": "Ali Kobuz",
-      "email": "alikobuz@hygieiatr.com",
-      "phone": "+905389760902"
-    },
-    "tags": [
-      "SLEEPY",
-      "YÜZEY TEMİZLİK HAVLUSU&MENDİL",
-      "100LÜ"
-    ],
-    "status": "active",
-    "images": [
-      "products/hyg-21-1.avif"
-    ],
-    "createdAt": "2025-09-25T13:51:01.090Z",
-    "updatedAt": "2025-10-07T13:07:43.180Z",
-    "__v": 0,
-    "dimensions": {}
-  },
-  {
-    "_id": "68d554204d3f1634a8e46b7d",
-    "name": "Oto Fırçası",
-    "description": "Oto Fırça 17cm Otomobil Yıkama Fırçası, Hortum Girişli Araba Fırçası",
-    "sku": "HYG-26",
-    "category": "Temizlik Ürünleri",
-    "wholesalePrice": 29.97,
-    "retailPrice": 38,
-    "stock": 50,
-    "minStock": 0,
-    "unit": "adet",
-    "supplier": {
-      "name": "Hygieia",
-      "contact": "Ali Kobuz",
-      "email": "alikobuz@hygieiatr.com",
-      "phone": "+905389760902"
-    },
-    "tags": [
-      "OTO FIRÇASI",
-      "17CM",
-      "Hortum Girişli Araba Fırçası",
-      "Otomobil Yıkama Fırçası"
-    ],
-    "status": "active",
-    "images": [
-      "products/hyg-26-1.jpeg"
-    ],
-    "createdAt": "2025-09-25T14:39:28.028Z",
-    "updatedAt": "2025-10-09T12:27:32.859Z",
-    "__v": 0,
-    "dimensions": {}
-  },
-  {
-    "_id": "68d5171fe8f832b0c40dc088",
-    "name": "Dispanser Z Havlu 200'Lü 12x200",
-    "description": "16GR. 20,5x21CM. 1 KOLİ 12x200=2400 ADET",
-    "sku": "HYG-7",
-    "category": "Kağıt Ürünleri",
-    "wholesalePrice": 312,
-    "retailPrice": 374.4,
-    "stock": 100,
-    "minStock": 0,
-    "unit": "adet",
-    "supplier": {
-      "name": "Hygieia",
-      "contact": "Ali Kobuz",
-      "email": "alikobuz@hygieiatr.com",
-      "phone": "05389760902"
-    },
-    "tags": [
-      "DİSPENSER PEÇETE, Z KATLAMA",
-      "DİSPANSER PEÇETE",
-      "Z KATLAMA"
-    ],
-    "status": "active",
-    "images": [
-      "products/hyg-7-1.jpeg"
-    ],
-    "createdAt": "2025-09-25T10:19:11.329Z",
-    "updatedAt": "2025-10-09T13:57:11.787Z",
     "__v": 0,
     "dimensions": {}
   },
@@ -616,6 +296,38 @@
     "dimensions": {}
   },
   {
+    "_id": "68d52443cebad6b9d67f464f",
+    "name": "Nergis Dispanser Peçete 18x250",
+    "description": "17x21 cm   18x250 Adet Nergis Dispanser Peçete",
+    "sku": "HYG-12",
+    "category": "Kağıt Ürünleri",
+    "wholesalePrice": 201.25,
+    "retailPrice": 241.5,
+    "stock": 50,
+    "minStock": 0,
+    "unit": "adet",
+    "supplier": {
+      "name": "Hygieia",
+      "contact": "Ali Kobuz",
+      "email": "alikobuz@hygieiatr.com",
+      "phone": "05389760902"
+    },
+    "tags": [
+      "NERGİS",
+      "DİSPANSER PEÇETE",
+      "17X21 CM",
+      "18X250 ADET"
+    ],
+    "status": "active",
+    "images": [
+      "products/hyg-12-1.jpeg"
+    ],
+    "createdAt": "2025-09-25T11:15:15.886Z",
+    "updatedAt": "2025-10-07T14:19:18.440Z",
+    "__v": 0,
+    "dimensions": {}
+  },
+  {
     "_id": "68d534a64d203f5a93744bb8",
     "name": "Domestos Çamaşır Suyu Ultra Kıvamlı 3240 ml.",
     "description": "3240 Domestos Çamaşır Suyu Ultra Kıvamlı",
@@ -682,6 +394,37 @@
     "dimensions": {}
   },
   {
+    "_id": "68d53da74d203f5a93744d38",
+    "name": "Porçöz 1 Litre",
+    "description": "1 Litre Porçöz",
+    "sku": "HYG-15",
+    "category": "Temizlik Ürünleri",
+    "wholesalePrice": 46.76,
+    "retailPrice": 56.11,
+    "stock": 50,
+    "minStock": 0,
+    "unit": "adet",
+    "weight": 0.99,
+    "supplier": {
+      "name": "Hygieia",
+      "contact": "Ali Kobuz",
+      "email": "alikobuz@hygieiatr.com",
+      "phone": "+905389760902"
+    },
+    "tags": [
+      "PORÇÖZ",
+      "KİREÇ SÖKÜCÜ"
+    ],
+    "status": "active",
+    "images": [
+      "products/hyg-15-1.jpeg"
+    ],
+    "createdAt": "2025-09-25T13:03:35.343Z",
+    "updatedAt": "2025-10-07T13:20:47.347Z",
+    "__v": 0,
+    "dimensions": {}
+  },
+  {
     "_id": "68d53e311cabe355e461641f",
     "name": "Asperox Sarı Güç 1 lt.",
     "description": "1 Litre Asperox Sarı Güç ",
@@ -709,6 +452,105 @@
     ],
     "createdAt": "2025-09-25T13:05:53.037Z",
     "updatedAt": "2025-10-07T13:19:32.150Z",
+    "__v": 0,
+    "dimensions": {}
+  },
+  {
+    "_id": "68d53ede4d203f5a93744d75",
+    "name": "Cif Krem Limon 750 ml",
+    "description": "750 ml CİF KREM LİMON",
+    "sku": "HYG-17",
+    "category": "Temizlik Ürünleri",
+    "wholesalePrice": 61.88,
+    "retailPrice": 74.25,
+    "stock": 50,
+    "minStock": 0,
+    "unit": "adet",
+    "weight": 0,
+    "supplier": {
+      "name": "Hygieia",
+      "contact": "Ali Kobuz",
+      "email": "alikobuz@hygieiatr.com",
+      "phone": "+905389760902"
+    },
+    "tags": [
+      "LİMON",
+      "750ML",
+      "CİF KREM",
+      "CİF"
+    ],
+    "status": "active",
+    "images": [
+      "products/hyg-17-1.webp"
+    ],
+    "createdAt": "2025-09-25T13:08:46.085Z",
+    "updatedAt": "2025-10-07T13:18:02.152Z",
+    "__v": 0,
+    "dimensions": {}
+  },
+  {
+    "_id": "68d5426ed4ae696d8563c5bd",
+    "name": "Cif Krem Çamaşır Suyu Katkılı 750 ml",
+    "description": "ÇAMAŞIR SUYU KATKILI CİF 750ML",
+    "sku": "HYG-02",
+    "category": "Temizlik Ürünleri",
+    "wholesalePrice": 61.8,
+    "retailPrice": 74.16,
+    "stock": 50,
+    "minStock": 0,
+    "unit": "adet",
+    "supplier": {
+      "name": "Hygieia",
+      "contact": "Ali Kobuz",
+      "email": "alikobuz@hygieiatr.com",
+      "phone": "+905389760902"
+    },
+    "tags": [
+      "CİF KREM",
+      "ÇAMAŞIR SUYU KATKILI",
+      "750ML",
+      "CİF"
+    ],
+    "status": "active",
+    "images": [
+      "products/hyg-02-1.jpeg"
+    ],
+    "createdAt": "2025-09-25T13:23:58.537Z",
+    "updatedAt": "2025-10-07T13:16:32.719Z",
+    "__v": 0,
+    "dimensions": {}
+  },
+  {
+    "_id": "68d544ae8b4a6bf81f1a2fee",
+    "name": "Cif Power Shine Mutfak Sprey 750 ml",
+    "description": "750 ml Cif Power Shine Mutfak Spreyi",
+    "sku": "HYG-18",
+    "category": "Temizlik Ürünleri",
+    "wholesalePrice": 103.58,
+    "retailPrice": 125,
+    "stock": 48,
+    "minStock": 0,
+    "unit": "adet",
+    "supplier": {
+      "name": "Hygieia",
+      "contact": "Ali Kobuz",
+      "email": "alikobuz@hygieiatr.com",
+      "phone": "+905389760902"
+    },
+    "tags": [
+      "CİF",
+      "POWER SHINE MUTFAK",
+      "750ML",
+      "TEMİZLEYİCİ",
+      "POWER SHİNE",
+      "SPREY"
+    ],
+    "status": "active",
+    "images": [
+      "products/hyg-18-1.jpeg"
+    ],
+    "createdAt": "2025-09-25T13:33:34.869Z",
+    "updatedAt": "2025-10-07T13:15:25.671Z",
     "__v": 0,
     "dimensions": {}
   },
@@ -745,6 +587,101 @@
     "dimensions": {}
   },
   {
+    "_id": "68d546128b4a6bf81f1a3018",
+    "name": "Fairy Bulaşık Deterjanı 650 ml",
+    "description": "650ML Fairy Bulaşık Deterjanı Limonlu",
+    "sku": "HYG-20",
+    "category": "Temizlik Ürünleri",
+    "wholesalePrice": 59.89,
+    "retailPrice": 71.9,
+    "stock": 50,
+    "minStock": 0,
+    "unit": "adet",
+    "supplier": {
+      "name": "Hygieia",
+      "contact": "Ali Kobuz",
+      "email": "alikobuz@hygieiatr.com",
+      "phone": "+905389760902"
+    },
+    "tags": [
+      "FAIRY",
+      "BULAŞIK DETERJANI",
+      "650ML",
+      "LİMONLU"
+    ],
+    "status": "active",
+    "images": [
+      "products/hyg-20-1.jpeg"
+    ],
+    "createdAt": "2025-09-25T13:39:30.737Z",
+    "updatedAt": "2025-10-07T13:09:23.602Z",
+    "__v": 0,
+    "dimensions": {}
+  },
+  {
+    "_id": "68d548c5d4ae696d8563c6c3",
+    "name": "Sleepy Yüzey Temizlik Havlusu&Mendili 100'lü",
+    "description": "YÜZEY TEMİZLİK HAVLUSU, TÜM YÜZEYLER, 100LÜ",
+    "sku": "HYG-21",
+    "category": "Temizlik Ürünleri",
+    "wholesalePrice": 75,
+    "retailPrice": 93.99,
+    "stock": 50,
+    "minStock": 0,
+    "unit": "adet",
+    "supplier": {
+      "name": "Hygieia",
+      "contact": "Ali Kobuz",
+      "email": "alikobuz@hygieiatr.com",
+      "phone": "+905389760902"
+    },
+    "tags": [
+      "SLEEPY",
+      "YÜZEY TEMİZLİK HAVLUSU&MENDİL",
+      "100LÜ"
+    ],
+    "status": "active",
+    "images": [
+      "products/hyg-21-1.avif"
+    ],
+    "createdAt": "2025-09-25T13:51:01.090Z",
+    "updatedAt": "2025-10-07T13:07:43.180Z",
+    "__v": 0,
+    "dimensions": {}
+  },
+  {
+    "_id": "68d54bb5e5a0c655d5c58930",
+    "name": "Plastik Bardak 180 cc 100 lü",
+    "description": "PLASTİK BARDAK, 100LÜ, 180CC",
+    "sku": "HYG-22",
+    "category": "Ofis Malzemeleri",
+    "wholesalePrice": 14.58,
+    "retailPrice": 18,
+    "stock": 49,
+    "minStock": 0,
+    "unit": "adet",
+    "supplier": {
+      "name": "Hygieia",
+      "contact": "Ali Kobuz",
+      "email": "alikobuz@hygieiatr.com",
+      "phone": "+905389760902"
+    },
+    "tags": [
+      "PLASTİK BARDAK",
+      "100LÜ",
+      "LİNDERA",
+      "180CC"
+    ],
+    "status": "active",
+    "images": [
+      "products/hyg-22-1.jpeg"
+    ],
+    "createdAt": "2025-09-25T14:03:33.777Z",
+    "updatedAt": "2025-10-28T06:42:02.471Z",
+    "__v": 0,
+    "dimensions": {}
+  },
+  {
     "_id": "68d54cef7499af81822dd389",
     "name": "Beybi İş Eldiveni PN3",
     "description": "İŞ ELDİVENİ PN3",
@@ -776,6 +713,37 @@
     "dimensions": {}
   },
   {
+    "_id": "68d54f1dca366bc8ccfcfd9c",
+    "name": "Mikrofiber Temizlik Bezi 40x40 Cm",
+    "description": "MİKROFİBER TEMİZLİK BEZİ, 40x40 ÖLÇÜ",
+    "sku": "HYG-24",
+    "category": "Temizlik Ürünleri",
+    "wholesalePrice": 10.73,
+    "retailPrice": 13,
+    "stock": 45,
+    "minStock": 0,
+    "unit": "adet",
+    "supplier": {
+      "name": "Hygieia",
+      "contact": "Ali Kobuz",
+      "email": "alikobuz@hygieiatr.com",
+      "phone": "+905389760902"
+    },
+    "tags": [
+      "MİKROFİBER",
+      "TEMİZLİK BEZİ",
+      "40x40"
+    ],
+    "status": "active",
+    "images": [
+      "products/hyg-24-1.jpeg"
+    ],
+    "createdAt": "2025-09-25T14:18:05.462Z",
+    "updatedAt": "2025-10-07T12:55:02.082Z",
+    "__v": 0,
+    "dimensions": {}
+  },
+  {
     "_id": "68d54ffe11325860cfc5f179",
     "name": "Bulaşık Süngeri 5'li",
     "description": "5'Lİ SÜNGER",
@@ -802,6 +770,38 @@
     ],
     "createdAt": "2025-09-25T14:21:50.349Z",
     "updatedAt": "2025-10-28T06:42:01.783Z",
+    "__v": 0,
+    "dimensions": {}
+  },
+  {
+    "_id": "68d554204d3f1634a8e46b7d",
+    "name": "Oto Fırçası",
+    "description": "Oto Fırça 17cm Otomobil Yıkama Fırçası, Hortum Girişli Araba Fırçası",
+    "sku": "HYG-26",
+    "category": "Temizlik Ürünleri",
+    "wholesalePrice": 29.97,
+    "retailPrice": 38,
+    "stock": 50,
+    "minStock": 0,
+    "unit": "adet",
+    "supplier": {
+      "name": "Hygieia",
+      "contact": "Ali Kobuz",
+      "email": "alikobuz@hygieiatr.com",
+      "phone": "+905389760902"
+    },
+    "tags": [
+      "OTO FIRÇASI",
+      "17CM",
+      "Hortum Girişli Araba Fırçası",
+      "Otomobil Yıkama Fırçası"
+    ],
+    "status": "active",
+    "images": [
+      "products/hyg-26-1.jpeg"
+    ],
+    "createdAt": "2025-09-25T14:39:28.028Z",
+    "updatedAt": "2025-10-09T12:27:32.859Z",
     "__v": 0,
     "dimensions": {}
   },

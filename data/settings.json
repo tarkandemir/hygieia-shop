@@ -1,5 +1,25 @@
 [
   {
+    "_id": "689a1ee84920bc6e0ecbb925",
+    "key": "company_name",
+    "value": "Hygieia B2B Platform",
+    "description": "Şirket adı",
+    "category": "company",
+    "isPublic": true,
+    "createdAt": "2025-08-11T16:48:40.700Z",
+    "updatedAt": "2025-08-11T16:48:40.700Z"
+  },
+  {
+    "_id": "689a1ee84920bc6e0ecbb926",
+    "key": "currency",
+    "value": "TRY",
+    "description": "Varsayılan para birimi",
+    "category": "general",
+    "isPublic": true,
+    "createdAt": "2025-08-11T16:48:40.700Z",
+    "updatedAt": "2025-08-11T16:48:40.700Z"
+  },
+  {
     "_id": "689a1ee84920bc6e0ecbb927",
     "key": "tax_rate",
     "value": 0.18,
@@ -63,26 +83,6 @@
     "description": "E-posta bildirimleri",
     "category": "notification",
     "isPublic": false,
-    "createdAt": "2025-08-11T16:48:40.700Z",
-    "updatedAt": "2025-08-11T16:48:40.700Z"
-  },
-  {
-    "_id": "689a1ee84920bc6e0ecbb925",
-    "key": "company_name",
-    "value": "Hygieia B2B Platform",
-    "description": "Şirket adı",
-    "category": "company",
-    "isPublic": true,
-    "createdAt": "2025-08-11T16:48:40.700Z",
-    "updatedAt": "2025-08-11T16:48:40.700Z"
-  },
-  {
-    "_id": "689a1ee84920bc6e0ecbb926",
-    "key": "currency",
-    "value": "TRY",
-    "description": "Varsayılan para birimi",
-    "category": "general",
-    "isPublic": true,
     "createdAt": "2025-08-11T16:48:40.700Z",
     "updatedAt": "2025-08-11T16:48:40.700Z"
   },

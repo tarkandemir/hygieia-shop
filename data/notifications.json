@@ -15,6 +15,23 @@
     "createdAt": "2025-08-11T16:48:41.671Z"
   },
   {
+    "_id": "689a1ee94920bc6e0ecbb92e",
+    "title": "Düşük Stok Uyarısı",
+    "message": "Bazı ürünlerde stok seviyeleri minimum seviyenin altına düştü.",
+    "type": "warning",
+    "userId": "689a1ee74920bc6e0ecbb914",
+    "isRead": false,
+    "action": {
+      "type": "link",
+      "url": "/products?filter=low-stock",
+      "label": "Ürünleri Görüntüle"
+    },
+    "metadata": {
+      "lowStockCount": 3
+    },
+    "createdAt": "2025-08-11T14:48:41.671Z"
+  },
+  {
     "_id": "689a1ee94920bc6e0ecbb92f",
     "title": "Yeni Sipariş",
     "message": "ABC Ticaret Ltd. Şti.'den yeni sipariş alındı.",
@@ -31,22 +48,5 @@
       "amount": 5000
     },
     "createdAt": "2025-08-11T12:48:41.671Z"
-  },
-  {
-    "_id": "689a1ee94920bc6e0ecbb92e",
-    "title": "Düşük Stok Uyarısı",
-    "message": "Bazı ürünlerde stok seviyeleri minimum seviyenin altına düştü.",
-    "type": "warning",
-    "userId": "689a1ee74920bc6e0ecbb914",
-    "isRead": false,
-    "action": {
-      "type": "link",
-      "url": "/products?filter=low-stock",
-      "label": "Ürünleri Görüntüle"
-    },
-    "metadata": {
-      "lowStockCount": 3
-    },
-    "createdAt": "2025-08-11T14:48:41.671Z"
   }
 ]
