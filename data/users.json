@@ -1,17 +1,5 @@
 [
   {
-    "_id": "689b3324741d9fc66906e7a0",
-    "email": "dilekayyildiz@hygieiatr.com",
-    "password": "$2b$12$kAHz.pKO6qCpAYg5aGoDBeKbJ6LgkidpsTGwN9ITMFZHotpIcHP1G",
-    "name": "Dilek Ayyıldız",
-    "role": "employee",
-    "permissions": [],
-    "isActive": true,
-    "createdAt": "2025-08-12T12:27:16.817Z",
-    "updatedAt": "2025-08-12T12:27:16.817Z",
-    "__v": 0
-  },
-  {
     "_id": "689a2528e81d8f6ed2edeb4c",
     "email": "hey@tarkandemir.com",
     "password": "$2b$12$KQe9EvBVsseJ.exFdvBV5eTUngGU8yoSLWMzKTYxo0i2faVZXu/qu",
@@ -33,6 +21,18 @@
     "isActive": true,
     "createdAt": "2025-08-12T12:26:19.597Z",
     "updatedAt": "2025-08-12T12:26:19.597Z",
+    "__v": 0
+  },
+  {
+    "_id": "689b3324741d9fc66906e7a0",
+    "email": "dilekayyildiz@hygieiatr.com",
+    "password": "$2b$12$kAHz.pKO6qCpAYg5aGoDBeKbJ6LgkidpsTGwN9ITMFZHotpIcHP1G",
+    "name": "Dilek Ayyıldız",
+    "role": "employee",
+    "permissions": [],
+    "isActive": true,
+    "createdAt": "2025-08-12T12:27:16.817Z",
+    "updatedAt": "2025-08-12T12:27:16.817Z",
     "__v": 0
   },
   {
