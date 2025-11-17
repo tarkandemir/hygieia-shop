@@ -1,5 +1,29 @@
 [
   {
+    "_id": "689a1ee84920bc6e0ecbb91a",
+    "name": "Otomotiv",
+    "description": "Araç yedek parçaları ve otomotiv ürünleri",
+    "icon": "truck",
+    "color": "#6b7280",
+    "order": 5,
+    "isActive": false,
+    "createdAt": "2025-08-11T16:48:40.046Z",
+    "updatedAt": "2025-09-18T07:04:58.069Z",
+    "slug": "otomotiv"
+  },
+  {
+    "_id": "689a1ee84920bc6e0ecbb91e",
+    "name": "Ofis Malzemeleri",
+    "description": "Kırtasiye, ofis mobilyası ve büro malzemeleri",
+    "icon": "briefcase",
+    "color": "#0891b2",
+    "order": 9,
+    "isActive": true,
+    "createdAt": "2025-08-11T16:48:40.046Z",
+    "updatedAt": "2025-09-18T07:04:58.305Z",
+    "slug": "ofis-malzemeleri"
+  },
+  {
     "_id": "689a1ee84920bc6e0ecbb916",
     "name": "Elektronik",
     "description": "Bilgisayar, telefon, televizyon ve elektronik cihazlar",
@@ -24,16 +48,16 @@
     "slug": "temizlik-urunleri"
   },
   {
-    "_id": "689a1ee84920bc6e0ecbb918",
-    "name": "Gıda & İçecek",
-    "description": "Yiyecek, içecek ve gıda ürünleri",
-    "icon": "cake",
-    "color": "#10b981",
-    "order": 3,
+    "_id": "689a1ee84920bc6e0ecbb91f",
+    "name": "Makine & Ekipman",
+    "description": "Endüstriyel makine ve ekipmanlar",
+    "icon": "cog-6-tooth",
+    "color": "#dc2626",
+    "order": 10,
     "isActive": true,
     "createdAt": "2025-08-11T16:48:40.046Z",
-    "updatedAt": "2025-09-18T07:04:56.645Z",
-    "slug": "gida-icecek"
+    "updatedAt": "2025-09-18T07:04:58.539Z",
+    "slug": "makine-ekipman"
   },
   {
     "_id": "689a1ee84920bc6e0ecbb919",
@@ -48,16 +72,29 @@
     "slug": "ev-bahce"
   },
   {
-    "_id": "689a1ee84920bc6e0ecbb91a",
-    "name": "Otomotiv",
-    "description": "Araç yedek parçaları ve otomotiv ürünleri",
-    "icon": "truck",
-    "color": "#6b7280",
-    "order": 5,
-    "isActive": false,
+    "_id": "68cba1d255878c7460e28e36",
+    "name": "Kağıt Ürünleri",
+    "description": "Kağıt havlu, tuvalet kağıdı ve diğer kağıt ürünleri",
+    "icon": "cube",
+    "color": "#6366f1",
+    "order": 2,
+    "isActive": true,
+    "createdAt": "2025-09-18T06:08:18.045Z",
+    "updatedAt": "2025-09-18T07:04:59.015Z",
+    "__v": 0,
+    "slug": "kagit-urunleri"
+  },
+  {
+    "_id": "689a1ee84920bc6e0ecbb918",
+    "name": "Gıda & İçecek",
+    "description": "Yiyecek, içecek ve gıda ürünleri",
+    "icon": "cake",
+    "color": "#10b981",
+    "order": 3,
+    "isActive": true,
     "createdAt": "2025-08-11T16:48:40.046Z",
-    "updatedAt": "2025-09-18T07:04:58.069Z",
-    "slug": "otomotiv"
+    "updatedAt": "2025-09-18T07:04:56.645Z",
+    "slug": "gida-icecek"
   },
   {
     "_id": "689a1ee84920bc6e0ecbb91b",
@@ -94,42 +131,5 @@
     "createdAt": "2025-08-11T16:48:40.046Z",
     "updatedAt": "2025-09-18T07:04:57.363Z",
     "slug": "kitap-medya"
-  },
-  {
-    "_id": "689a1ee84920bc6e0ecbb91e",
-    "name": "Ofis Malzemeleri",
-    "description": "Kırtasiye, ofis mobilyası ve büro malzemeleri",
-    "icon": "briefcase",
-    "color": "#0891b2",
-    "order": 9,
-    "isActive": true,
-    "createdAt": "2025-08-11T16:48:40.046Z",
-    "updatedAt": "2025-09-18T07:04:58.305Z",
-    "slug": "ofis-malzemeleri"
-  },
-  {
-    "_id": "689a1ee84920bc6e0ecbb91f",
-    "name": "Makine & Ekipman",
-    "description": "Endüstriyel makine ve ekipmanlar",
-    "icon": "cog-6-tooth",
-    "color": "#dc2626",
-    "order": 10,
-    "isActive": true,
-    "createdAt": "2025-08-11T16:48:40.046Z",
-    "updatedAt": "2025-09-18T07:04:58.539Z",
-    "slug": "makine-ekipman"
-  },
-  {
-    "_id": "68cba1d255878c7460e28e36",
-    "name": "Kağıt Ürünleri",
-    "description": "Kağıt havlu, tuvalet kağıdı ve diğer kağıt ürünleri",
-    "icon": "cube",
-    "color": "#6366f1",
-    "order": 2,
-    "isActive": true,
-    "createdAt": "2025-09-18T06:08:18.045Z",
-    "updatedAt": "2025-09-18T07:04:59.015Z",
-    "__v": 0,
-    "slug": "kagit-urunleri"
   }
 ]
